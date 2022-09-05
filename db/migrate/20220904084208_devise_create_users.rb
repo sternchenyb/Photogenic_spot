@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       
       t.string :name, null: false
       t.text :profile_image, null: false
-      t.boolean :is_deleted, default: true
+      t.boolean :is_deleted, default: false
       t.datetime :registration_date, precision: 6, null: false
       t.datetime :updated_date, precision: 6, null: false
       t.timestamps null: false

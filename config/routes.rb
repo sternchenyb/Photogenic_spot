@@ -24,7 +24,7 @@ devise_scope :admin do
    resources :genres, only: [:show]
    get 'users/cancel' => 'users#cancel'
    patch 'users/withdraw' => 'users#withdraw'
-   get 'userrs/my_page' => 'users#show'
+   get 'users/my_page' => 'users#show'
    get 'users/information/edit' => 'users#edit'
    patch 'users/information' => 'users#update'
    delete '/spots/destroy_all' => 'spots#destroy_all'
@@ -35,6 +35,6 @@ devise_scope :admin do
    resources :spots, only: [:index,:create,:show,:edit,:update,:destroy]
    resources :genres, only: [:index,:create,:edit,:update,:destroy]
    resources :users, only: [:index,:show,:edit,:update]
-   
+   resources :spot_comments, only: [:show,:edit,:update,:destroy]
  end
 end

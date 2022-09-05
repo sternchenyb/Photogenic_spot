@@ -1,0 +1,84 @@
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/"><%= image_tag('Photogenic Spot-logo.png', size: '250x100') %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+
+              <% if admin_signed_in? %>
+                <li class="m-1">
+                  <%= link_to admin_spots_path,class: "btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
+                  <i class="fad fa-island-tropical"></i> SPOTS
+                  <% end %>
+                </li>
+                <li class="m-1">
+                  <%=  link_to admin_users_path,class: "btn btn-outline-secondary rounded-pill",title:"user lists" do %>
+                  <i class="fad fa-users"></i> USERS
+                  <% end %>
+                </li>
+                <li class="m-1">
+                  <%=  link_to admin_genres_path ,class: "btn btn-outline-secondary rounded-pill",title:"genre lists" do %>
+                  <i class="fas fa-seedling"></i> GENRES
+                  <% end %>
+                </li>
+                <li class="m-1">
+                  <%= link_to destroy_admin_session_path, method: :delete,class: "btn btn-outline-secondary rounded-pill",title:"logout" do %>
+                  <i class="fas fa-sign-out-alt"></i>LOGOUT
+                  <% end %>
+                </li>
+              <% elsif user_signed_in? %>
+                <span class="u h7 text-white strong">ようこそ！<%= current_customer.name %>さん！</span>
+                  <li class="m-1">
+                    <%= link_to users_my_page_path,class: "btn btn-outline-secondary rounded-pill",title:"my page" do %>
+                    <i class="fas fa-address-card"></i> MY PAGE
+                    <% end %>
+                  </li>
+                  <li class="m-1">
+                  <%= link_to spots_path,class: "btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
+                  <i class="fad fa-island-tropical"></i> SPOTS
+                    <% end %>
+                  </li>
+                  <li class="m-1">
+                    <%=  link_to about_path ,class: "btn btn-outline-secondary rounded-pill",title:"map" do %>
+                    <i class="fad fa-map-marked-alt"></i> MAP
+                    <% end %>
+                  </li>
+                  <li class="m-1">
+                    <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary rounded-pill",title:"logout" do %>
+                    <i class="fas fa-sign-out-alt"></i> LOGOUT
+                    <% end %>
+                  </li>
+              <% else %>
+                  <li class="m-1">
+                    <%= link_to about_path, data: {"turbolinks" => false}, class: "btn btn-outline-secondary rounded-pill",title:"about" do %>
+                    <i class="fad fa-map-marked-alt"></i> ABOUT
+                    <% end %>
+                  </li>
+                  <li class="m-1">
+                  <%= link_to spots_path,class: "btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
+                  <i class="fad fa-island-tropical"></i> SPOTS
+                    <% end %>
+                  </li>
+                  <li class="m-1">
+                    <%= link_to new_user_registration_path,class: "btn btn-outline-secondary rounded-pill",title:"sign up" do %>
+                    <i class="fas fa-user-edit"></i> SIGN UP
+                    <% end %>
+                  </li>
+                  <li class="m-1">
+                    <%= link_to new_user_session_path ,class: "btn btn-outline-secondary rounded-pill",title:"sign in" do %>
+                    <i class="fas fa-sign-in-alt"></i> SIGN IN
+                    <% end %>
+                  </li>
+                  <li class="m-1">
+                    <%= link_to new_admin_session_path ,class: "btn btn-outline-secondary rounded-pill",title:"admin" do %>
+                    <i class="fas fa-id-badge"></i>
+                    <% end %>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>

@@ -1,0 +1,33 @@
+<div class="card-list-container py-5">
+  <% @spots.each do |spot| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <%= link_to spot_path(spot.id) do %>
+      <%= image_tag post_image.get_image, class:"card-img-top"; %>
+    <% end %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <%= image_tag post_image.user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %>
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <%= link_to(spot_path(spot.id), class:"text-dark") do %>
+              <strong><i class="far fa-flag"></i><span> <%= spot.name %></span></strong>
+            <% end %>
+          </p>
+          <p class="card-text">CAPTION：<%= spot.caption %></p>
+          <span><i class="fas fa-user"></i> By <%= spot.user.name %> ｜ </span>
+          <span>
+            <% if @post_comments.any? %>
+              <%= link_to "VIEW ALL #{spot.spot_comments.count} COMMENTS", spot_path(spot.id), class:"text-dark" %>
+            <% else %>
+              <%= link_to "COMMENT" , spot_path(spot.id), class:"text-dark" %>
+            <% end %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%= paginate posts %>
+</div>

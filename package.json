@@ -2,15 +2,17 @@
   "name": "photogenic-spot",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "5.15.4",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.4.3",
     "bootstrap": "4.5",
     "jquery": "^3.6.1",
     "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
   "description": "## サイト概要 ### サイトテーマ 映える観光スポットを自由に投稿し共有できるレビューサイト",
@@ -32,5 +34,8 @@
     "url": "https://github.com/sternchenyb/Photogenic_spot/issues"
   },
   "homepage": "https://github.com/sternchenyb/Photogenic_spot#readme",
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "webpack-dev-server": "^3"
+  }
 }
