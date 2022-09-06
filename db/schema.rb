@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 2022_09_05_062038) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.datetime "registration_date", precision: 6, null: false
-    t.datetime "updated_date", precision: 6, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -36,8 +34,6 @@ ActiveRecord::Schema.define(version: 2022_09_05_062038) do
     t.integer "user_id"
     t.integer "spot_id"
     t.text "comment", null: false
-    t.datetime "registration_date", precision: 6, null: false
-    t.datetime "updated_date", precision: 6, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_comments_on_email", unique: true
@@ -52,8 +48,6 @@ ActiveRecord::Schema.define(version: 2022_09_05_062038) do
     t.datetime "remember_created_at"
     t.integer "user_id"
     t.integer "spot_id"
-    t.datetime "registration_date", precision: 6, null: false
-    t.datetime "updated_date", precision: 6, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_favorites_on_email", unique: true
@@ -67,8 +61,6 @@ ActiveRecord::Schema.define(version: 2022_09_05_062038) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.datetime "registration_date", precision: 6, null: false
-    t.datetime "updated_date", precision: 6, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_genres_on_email", unique: true
@@ -87,11 +79,8 @@ ActiveRecord::Schema.define(version: 2022_09_05_062038) do
     t.string "address", null: false
     t.text "caption", null: false
     t.integer "star"
-    t.datetime "registration_date", precision: 6, null: false
-    t.datetime "updated_date", precision: 6, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "image"
     t.index ["email"], name: "index_spots_on_email", unique: true
     t.index ["reset_password_token"], name: "index_spots_on_reset_password_token", unique: true
   end
@@ -103,10 +92,8 @@ ActiveRecord::Schema.define(version: 2022_09_05_062038) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.text "profile_image", null: false
+    t.text "profile_image"
     t.boolean "is_deleted", default: false
-    t.datetime "registration_date", precision: 6, null: false
-    t.datetime "updated_date", precision: 6, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "introduction"

@@ -33,8 +33,6 @@ class DeviseCreateGenres < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
       
       t.string :name, null: false
-      t.datetime :registration_date, precision: 6, null: false
-      t.datetime :updated_date, precision: 6, null: false
       t.timestamps null: false
     end
 

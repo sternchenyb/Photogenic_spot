@@ -38,8 +38,6 @@ class DeviseCreateSpots < ActiveRecord::Migration[6.1]
       t.string :address, null: false
       t.text :caption, null: false
       t.integer :star
-      t.datetime :registration_date, precision: 6, null: false
-      t.datetime :updated_date, precision: 6, null: false
       t.timestamps null: false
     end
 

@@ -35,8 +35,6 @@ class DeviseCreateComments < ActiveRecord::Migration[6.1]
       t.integer :user_id
       t.integer :spot_id
       t.text :comment, null: false
-      t.datetime :registration_date, precision: 6, null: false
-      t.datetime :updated_date, precision: 6, null: false
       t.timestamps null: false
     end
 
