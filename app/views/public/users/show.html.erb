@@ -1,7 +1,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
    <div class='mx-auto'>
-    <h4 class="bg-primary text-light"><%= @user.name %>さんの会員詳細</h4>
+    <h4 class="bg text-center"><%= @user.name %>さんの会員詳細</h4>
      <table>
       <tr>
        <td>USER ID</td>
@@ -13,14 +13,14 @@
       </tr>
       <tr>
        <td>IMAGE</td>
-       <td>          <%= @user.profile_image %></td>
+       <td>          <%= image_tag @user.get_profile_image %></td>
       </tr>
       <tr>
        <td>EMAIL</td>
        <td>　　　　　<%= @user.email %></td>
       </tr>
       <tr>
-       <td><%= link_to 'EDIT', edit_user_path(@user), class: "btn btn-sm btn-success  rounded-pill" %></td>
+       <td><%= link_to 'EDIT', users_information_edit_path, class: "btn btn-sm btn-success  rounded-pill" %></td>
       </tr>
      </table>
    </div>

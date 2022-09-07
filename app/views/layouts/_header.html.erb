@@ -7,7 +7,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-
               <% if admin_signed_in? %>
                 <li class="m-1">
                   <%= link_to admin_spots_path,class: "btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
@@ -30,7 +29,7 @@
                   <% end %>
                 </li>
               <% elsif user_signed_in? %>
-                <span class="u h7 text-white strong">ようこそ！<%= current_customer.name %>さん！</span>
+                <span class="u h7 text-white strong">WELCOME,<%= current_user.name %>!</span>
                   <li class="m-1">
                     <%= link_to users_my_page_path,class: "btn btn-outline-secondary rounded-pill",title:"my page" do %>
                     <i class="fas fa-address-card"></i> MY PAGE
@@ -73,11 +72,11 @@
                     <% end %>
                   </li>
                   <li class="m-1">
-                    <%= link_to new_admin_session_path ,class: "btn btn-outline-secondary rounded-pill",title:"admin" do %>
-                    <i class="fas fa-id-badge"></i>
+                    <%= link_to users_guest_sign_in_path,class: "btn btn-outline-secondary rounded-pill",title: "guest sign in", method: :post do %>
+                    <i class="fas fa-id-badge"></i> GUEST SIGN IN
                     <% end %>
                   </li>
-              <% end %>
+                <% end %>
             </ul>
           </div>
         </div>

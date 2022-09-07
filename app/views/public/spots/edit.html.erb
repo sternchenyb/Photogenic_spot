@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">SPOT EDIT</h5>
+      <div class="form-body p-4">
+        <%= render "public/shared/error_messages", resource: resource %>
+        <!– post edit form –>
+        <%= form_with model: @spot,method: :patch do |f| %>
+          <%= f.file_field :spot_image, accept: "image/*", class: "w-100" %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
+            </div>
+            <%= f.text_field :name, class:"form-control", placeholder:"SPOT NAME" %>
+          </div>
+          <%= f.text_area :caption, class:"form-control", rows:"3", placeholder:"CAPTION" %>
+          <%= f.text_area :address, class:"form-control", placeholder:"ADDRESS" %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "SELECT GENRE" %>
+          <div id="star-rate<%= @spot.id %>"></div>  
+            <script>
+              $('#star-rate<%= @spot.id %>').raty({
+                size      : 36,
+                starOff   : '<%= asset_path('star-off.png') %>',
+                starOn    : '<%= asset_path('star-on.png') %>',
+                half      : false,
+                readOnly: true,
+                score: <%= @spot.star %>
+              });
+            </script>
+          <hr>
+          <%= f.submit 'SUBMIT', class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,4 +5,5 @@ class Favorite < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
    belongs_to :user
+   belongs_to :spot
 end

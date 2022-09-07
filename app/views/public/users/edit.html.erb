@@ -1,5 +1,4 @@
   <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :name %><br>
@@ -12,13 +11,15 @@
   </div>
 
   <div class="field">
+    <%= f.label :introduction %><br>
+    <%= f.text_field :introduction %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
@@ -27,16 +28,6 @@
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">

@@ -1,20 +1,28 @@
 Rails.application.routes.draw do
-# 顧客用
+# ユーザー用
 # URL /users/sign_in ...
-devise_for :users,skip: [:passwords], controllers: {
+devise_for :user, controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions: 'public/sessions',
+  # ゲストサインインのパスワード
+  passwords: 'public/passwords'
 }
 
 # 管理者用
-# URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+ #URL /admin/sign_in ...
+ devise_for :admin, skip: [:passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-devise_scope :admin do
+  # ユーザー用ゲストサインイン
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#new_guest'
+  end
+
+  devise_scope :admin do
     get '/admin/sign_out' => 'admin/sessions#destroy'
   end
+
 
  scope module: :public do
    root to: "homes#top"

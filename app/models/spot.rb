@@ -4,6 +4,9 @@ class Spot < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-    has_many_attached :image
+    has_many_attached :spot_image
     belongs_to :user
+    belongs_to :genre
+    has_many :spot_comments, dependent: :destroy
+    has_many :favorites, dependent: :destroy
 end

@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
+    
+  def check_guest
+    email = resource&.email || params[:user][:email].downcase
+    if email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの変更・削除はできません。'
+    end
+  end
 
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
