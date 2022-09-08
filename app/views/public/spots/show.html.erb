@@ -1,4 +1,13 @@
 <div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'search', genres: @genres %>
+      <%= link_to "CREATE SPOT",new_spot_path, class:"btn btn-sm btn-primary" %>
+    </div>
+
+
+
+<div class="container">
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">SPOT DETAIL</h5>
@@ -34,7 +43,7 @@
          </tr>
         </tbody>
       </table>
- 
+
       <div id="spot_comments">
         <%= render "spot_comments/comments", spot: @spot, spot_comments: @spot_comments %>
       </div>

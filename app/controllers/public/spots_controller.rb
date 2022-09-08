@@ -1,7 +1,17 @@
 class Public::SpotsController < ApplicationController
 
   def new
-    @spot = Spot.find(spot_params)
+    @spot = Spot.find(params[:id])
+  end
+
+  def index
+    @spots = Spot.page(params[:page])
+    @genres = genre.all
+  end
+  
+  def show
+    @genres = genre.all
+    @spot = Spot.find(params[:id])
   end
 
   def create

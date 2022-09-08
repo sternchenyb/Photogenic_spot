@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+          <%= render 'search', genres: @genres %>
+        </div>
+        <div class="col-lg-9 mx-auto">
+            <h2>SEARCHED TAG "<%= @genre.name %>"</h2><p class="text-center">"<%= @spots.count %> RESULTS"</p>
+            <!--観光地詳細をここにeachで並べる-->
+            <div class="spots-wrap row">
+            <% @spots.each do |spot| %>
+             <div class="spot-box col-lg-3">
+                <div><%= image_tag spot.image, size: "200x200" %></div>
+                <div><%= link_to spot.name, spot_path(spot.id) %></div>
+                <div><%= spot.address %></div>
+            </div>
+            <% end %>
+            <%= paginate @spots %>
+             
+            </div>
+        </div>
+    </div>
+</div>

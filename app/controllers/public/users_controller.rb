@@ -3,9 +3,10 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
+    @spots = @user.spots.page(params[:page])
   end
 
-   def unsubscribe
+  def cancel
     @user = current_user
   end
 

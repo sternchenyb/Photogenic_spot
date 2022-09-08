@@ -70,3 +70,4 @@ group :development, :test do
 end
 
 gem 'devise'
+gem 'kaminari','~> 1.2.1'

@@ -1,36 +1,46 @@
-  <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+   <div class='mx-auto'>
+    <h4 class="bg text-center">EDIT <%= @user.name %>'s MY PAGE </h4>
+    <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
+     <table>
+      <tr>
+       <td>USER ID</td>
+       <td>　　　　　<%= @user.id %></td>
+      </tr>
+      <tr>
+       <td>NAME</td>
+       <td>　　　　　<%= f.text_field :name %></td>
+      </tr>
+      <tr>
+       <td>INTRODUCTION</td>
+       <td>　　　　　<%= f.text_field :introduction %></td>
+      </tr>
+      <tr>
+       <td>IMAGE</td>
+       <td>　　　　　<%= f.file_field :profile_image, accept: "image/*",placeholder:"SELECT YOUR PROFILE IMAGE" %></td>
+      </tr>
+      <tr>
+       <td>EMAIL</td>
+       <td>　　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+       <td>PASSWORD</td>
+       <td>  <i>(leave blank if you don't want to change it)</i><br />
+  　　　　　<%= f.password_field :password, autocomplete: "new-password" %>
+         <% if @minimum_password_length %><br />
+         <em><%= @minimum_password_length %> characters minimum</em>
+         <% end %>
+       </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.submit "UPDATE", class: "btn btn-sm btn-primary  rounded-pill" %>
+          <%= link_to "CANCEL MY ACCOUNT", users_cancel_path, class: "btn btn-sm btn-danger rounded-pill" %>
+        </td>
+      </tr>
+     </table>
+     <% end %>
+   </div>
   </div>
-
-  <div class="field">
-    <%= f.label :profile_image %><br>
-    <%= f.file_field :profile_image, accept: "image/*" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :introduction %><br>
-    <%= f.text_field :introduction %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+ </div>
