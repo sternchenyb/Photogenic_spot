@@ -1,18 +1,18 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
    <div class='mx-auto'>
-   <h4 class='bg-dark text-light'>ジャンル一覧・追加</h4></br>
+   <h4 class='bg-dark text-light'>ジャンル追加</h4></br>
    <div class='row'>
-    <%= form_with model: [:admin,@genre] do |f| %>
-     ジャンル名　　
-    <%= f.text_field :name, placeholder:"ジャンル名" %>　　
+    <%= form_with model: [:admin,@genre], method: :post do |f| %>
+     ジャンル名
+    <%= f.text_field :name, placeholder:"ジャンル名" %>
     <%= f.submit '新規登録', class: 'btn btn-success rounded-pill' %>
     <% end %>
     </div></br>
     <table class='table table-hover table-inverse'>
      <thead class='thead-dark'>
       <tr>
-       <th>ジャンル</th>
+       <th>ジャンル一覧</th>
       </tr>
      </thead>
      <tbody>
@@ -26,6 +26,6 @@
        </tr>
      </tbody>
     </table>
-   </div> 
+   </div>
   </div>
- </div> 
+ </div>

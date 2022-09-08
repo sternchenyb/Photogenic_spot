@@ -3,7 +3,7 @@
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">NEW SPOT</h5>
       <div class="form-body p-4">
-        <%= render "public/shared/error_messages", resource: resource %>
+
         <!-- new post form -->
         <%= form_with model: @spot,method: :post do |f| %>
           <%= f.file_field :spot_image, accept: "image/*", class: "w-100" %>
@@ -29,7 +29,7 @@
               scoreName: 'spot[star]',
               half: false,
             });
-          </script>  
+          </script>
           <hr>
           <%= f.submit 'SHARE', class:"btn btn-lg btn-block btn-info mt-4" %>
         <% end %>

@@ -1,16 +1,16 @@
 class Public::SpotsController < ApplicationController
 
   def new
-    @spot = Spot.find(params[:id])
+    @spot = Spot.new
   end
 
   def index
     @spots = Spot.page(params[:page])
-    @genres = genre.all
+    @genres = Genre.all
   end
-  
+
   def show
-    @genres = genre.all
+    @genres = Genre.all
     @spot = Spot.find(params[:id])
   end
 
@@ -49,6 +49,6 @@ class Public::SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:name,:address,:spot_image,:caption,:star)
+    params.require(:spot).permit(:name,:address,:spot_image,:caption,:genre_id,:star)
   end
 end

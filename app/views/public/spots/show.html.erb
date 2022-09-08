@@ -1,7 +1,8 @@
+<%= render 'shared/flash_messages' %>
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <%= render 'search', genres: @genres %>
+      <%= render 'public/genres/search', genres: @genres %>
       <%= link_to "CREATE SPOT",new_spot_path, class:"btn btn-sm btn-primary" %>
     </div>
 

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+     <h4 class="bg-primary text-light"><%= @user.name %>さんの会員詳細</h4>
+     <%= form_with model: [:admin,@user],  method: :patch do |f| %>
+     <table>
+      <tr>
+       <td>会員ID</td>
+       <td>　　　　　　<%= @user.id %></td>
+      </tr>
+      <tr>
+       <td>氏名</td>
+       <td>　　　　　　<%= f.text_field :name, autofocus: true %></td>
+      </tr>
+      <tr>
+       <td>メールアドレス</td>
+       <td>　　　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+       <td><%= f.radio_button :is_deleted, 'false' %>
+           <%= f.label :is_deleted, '有効' %></td>
+       <td><%= f.radio_button :is_deleted, 'true' %>
+           <%= f.label :is_deleted, '退会' %></td>
+      </tr>
+      <tr>
+       <td><%= f.submit '変更を保存', class: 'btn btn-success  rounded-pill'%></td>
+      </tr>
+     </table>
+     <% end %>
+  </div>
+ </div>
+</div>
