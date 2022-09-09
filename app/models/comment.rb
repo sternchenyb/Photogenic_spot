@@ -1,4 +1,4 @@
-class SpotComment < ApplicationRecord
+class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :spot
 end

@@ -1,6 +1,7 @@
+<%= render 'public/shared/flash_messages' %>
 <div class="container">
-  <div class="row">
-    <div class="col-lg-3">
+  <div class="row no-gutters">
+    <div class="col-lg-1 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <%= render 'public/genres/search', genres: @genres %>
       <%= link_to "CREATE SPOT",new_spot_path, class:"btn btn-sm btn-primary" %>
     </div>

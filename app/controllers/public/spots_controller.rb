@@ -12,6 +12,9 @@ class Public::SpotsController < ApplicationController
   def show
     @genres = Genre.all
     @spot = Spot.find(params[:id])
+    @user = @spot.user
+    @comment = Comment.new
+    @comments = Comment.all
   end
 
   def create

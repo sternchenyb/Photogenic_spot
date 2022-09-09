@@ -1,11 +1,11 @@
 <%= render 'public/shared/flash_messages' %>
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-lg-3 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class="col-lg-1 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <%= render 'public/genres/search', genres: @genres %>
       <%= link_to "CREATE SPOT",new_spot_path, class:"btn btn-sm btn-primary" %>
     </div>
-    <div class="col-lg-8 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class="col-lg-10 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">SPOT DETAIL</h5>
       <div class="card-list-container py-5">
 
@@ -50,11 +50,13 @@
          </tr>
         </tbody>
       </table>
-
-
-    </div>
-
+      <div id="spot_comments">
+        <%= render "comments/comments", spot: @spot, comments: @comments %>
+      </div>
+      <div id="spot_comment_form">
+        <%= render "comments/comment_form", spot: @spot, comment: @comment %>
       </div>
     </div>
   </div>
+</div>
 </div>
