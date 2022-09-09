@@ -1,0 +1,17 @@
+<table>
+  <% spot.comments.each do |comment| %>
+    <tbody>
+      <tr>
+        <td><%= link_to users_my_page_path(comment.user_id) do %>
+              <%= image_tag spot.user.get_profile_image,size:"100,100" %>
+            <% end %></br>
+            <%= link_to comment.user.name, users_my_page_path(comment.user_id) %>
+        </td>
+        <td><%= comment.comment %></td>
+        <% if comment.user_id == current_user.id %>
+        <td><%= link_to "Destroy", comment_path(comment.id), method: :delete , remote: true, class: "btn btn-danger" %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

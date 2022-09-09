@@ -27,22 +27,24 @@ devise_for :user, controllers: {
  scope module: :public do
    root to: "homes#top"
    get 'about' => 'homes#about'
-   resources :favorites, only: [:create, :destroy]
-   resources :spot_comments, only: [:create, :destroy]
-   resources :genres, only: [:show]
    get 'users/cancel' => 'users#cancel'
    patch 'users/withdraw' => 'users#withdraw'
    get 'users/my_page' => 'users#show'
    get 'users/information/edit' => 'users#edit'
    patch 'users/information' => 'users#update'
    delete '/spots/destroy_all' => 'spots#destroy_all'
-   resources :spots, only: [:index,:update,:destroy,:create,:edit,:show,:new]
+   resources :spots, only: [:index,:update,:destroy,:create,:edit,:show,:new] do
+    resource :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+   end
+   resources :genres, only: [:show]
  end
+ 
  namespace :admin do
    root to: "homes#top"
    resources :spots, only: [:index,:create,:show,:edit,:update,:destroy]
    resources :genres, only: [:index,:create,:edit,:update,:destroy]
    resources :users, only: [:index,:show,:edit,:update]
-   resources :spot_comments, only: [:show,:edit,:update,:destroy]
+   resources :comments, only: [:show,:edit,:update,:destroy]
  end
 end

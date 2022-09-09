@@ -1,0 +1,4 @@
+  <%= form_with model: [spot, comment], local: false do |f| %>
+    <%= f.text_area :comment %>
+    <%= f.submit "POST" %>
+  <% end %>
