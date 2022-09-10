@@ -34,19 +34,8 @@
       <table class="table table-hover table-inverse">
        <thead>
         <tr>
-         <th><%=   %></th>
-         <td><div id="star-rate<%= spot.id %>"></div>
-            <script>
-               $('#star-rate<%= spot.id %>').raty({
-                 size      : 36,
-                 starOff   : '<%= asset_path('star-off.png') %>',
-                 starOn    : '<%= asset_path('star-on.png') %>',
-                 half      : false,
-                 readOnly: true,
-                 score: <%= spot.star %>,
-               });
-            </script>
-           </td>
+         <th><%= image_tag @spot.image.variant( resize: "600x500^", gravity: "center" ) %></th>
+
         </tr>
        </thead>
         <tbody>
@@ -57,14 +46,7 @@
               <%= link_to spot.user.name, users_my_page_path(spot.user_id) %></td>
           <td><%= link_to spot.name, spot_path(spot.id) %></td>
           <td><%= spot.caption %></td>
-          <td class="favorite-btn"><%= render 'favorites/favorite-btn', spot: spot %></td>
-          <td>
-           <% if @comments.any? %>
-              <%= link_to "VIEW ALL #{spot.spot_comments.count} COMMENTS", spot_path(spot.id), class:"text-dark" %>
-            <% else %>
-              <%= link_to "COMMENT" , spot_path(spot.id), class:"text-dark" %>
-            <% end %>
-          </td>
+
           <% if spot.user == current_user %>
           <td><%= link_to "Edit", edit_spot_path(spot.id), class:"btn btn-sm btn-success" %></td>
           <td><%= link_to "Destroy",spot_path(spot.id),class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "Are you sure？" %></td>
