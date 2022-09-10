@@ -1,8 +1,10 @@
 <%= render 'public/shared/flash_messages' %>
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-lg-2 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
-      <%= render 'public/genres/search', genres: @genres %>
+    <div class="col-md-3 sidebar">
+      <aside class="shadow-lg rounded px-0 my-5">
+        <%= render 'public/genres/search', genres: @genres %>
+      </aside>
       <%= link_to "CREATE SPOT",new_spot_path, class:"btn btn-sm btn-primary" %>
     </div>
 
@@ -13,27 +15,44 @@
     <div class="card-body">
       <div class="row">
         <div class="col-12 text-center">
+          <div id="star-rate<%= @spot.id %>"></div>
+            <script>
+               $('#star-rate<%= @spot.id %>').raty({
+                 size      : 36,
+                 starOff   : '<%= asset_path('star-off.png') %>',
+                 starOn    : '<%= asset_path('star-on.png') %>',
+                 half      : false,
+                 readOnly: true,
+                 score: <%= @spot.star %>,
+               });
+            </script>
           <%= image_tag @spot.image.variant( resize: "600x500^", gravity: "center" ) %>
         </div>
         <div class="col-2 text-center">
           <%= image_tag @spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
+          <%= link_to(users_my_page_path(@spot.user_id), class:"text-dark") do %>
+              <span><i class="fas fa-user"></i> By <%= @spot.user.name %> </span>
+          <% end %>
         </div>
         <div class="col-10">
           <p class="card-title">
-              <strong><i class="far fa-flag"></i><span> <%= @spot.name %></span></strong>
+            <%= render 'public/favorites/favorite-btn', spot: @spot %>
+            <strong><i class="far fa-flag"></i><span> <%= @spot.name %></span></strong>
           </p>
           <p class="card-text">CAPTION：<%= @spot.caption %></p>
           <p class="card-text">ADDRESS: <%= @spot.address %></p>
-          <span><i class="fas fa-user"></i> By <%= @spot.user.name %> ｜ </span>
-          <span>
-
-          </span>
           <p class="text-right">
             <% if @spot.user == current_user %>
               <%= link_to "Edit", edit_spot_path(@spot.id), class:"btn btn-sm btn-light" %>
               <%= link_to "Destroy",spot_path(@spot.id),class:"btn btn-sm btn-dark", method: :delete, "data-confirm" => "Are you sure？" %>
             <% end %>
           </p>
+          <div id="spot_comment_form">
+            <%= render "public/comments/comment_form", spot: @spot, comment: @comment %>
+          </div>
+          <div id="spot_comments">
+            <%= render "public/comments/comments", spot: @spot, comments: @comments %>
+          </div>
         </div>
       </div>
     </div>
