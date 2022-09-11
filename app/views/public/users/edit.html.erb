@@ -18,7 +18,7 @@
       </tr>
       <tr>
        <td>IMAGE</td>
-       <td>　　　　　<%= f.file_field :profile_image, accept: "image/*",placeholder:"SELECT YOUR PROFILE IMAGE" %></td>
+       <td>　　　　　<%= f.file_field :profile_image, accept: "image/*" %></td>
       </tr>
       <tr>
        <td>EMAIL</td>
@@ -26,8 +26,8 @@
       </tr>
       <tr>
        <td>PASSWORD</td>
-       <td>  <i>(leave blank if you don't want to change it)</i><br />
-  　　　　　<%= f.password_field :password, autocomplete: "new-password" %>
+       <td>　　　　<i>(leave blank if you don't want to change it)</i><br />
+       　　　　　  <%= f.password_field :password, autocomplete: "new-password" %>
          <% if @minimum_password_length %><br />
          <em><%= @minimum_password_length %> characters minimum</em>
          <% end %>
@@ -36,7 +36,7 @@
       <tr>
         <td>
           <%= f.submit "UPDATE", class: "btn btn-sm btn-primary  rounded-pill" %>
-          <%= link_to "CANCEL MY ACCOUNT", users_cancel_path, class: "btn btn-sm btn-danger rounded-pill" %>
+          <%= link_to "CANCEL MEMBERSHIP", users_cancel_path, class: "btn btn-danger rounded-pill" %>
         </td>
       </tr>
      </table>

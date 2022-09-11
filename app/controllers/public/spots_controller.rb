@@ -1,4 +1,15 @@
 class Public::SpotsController < ApplicationController
+    
+    # 観光地を評価順で表示
+    if params[:latest]
+     @spots = Spot.latest
+    elsif params[:old]
+     @spots = Spot.old
+    elsif params[:star_count]
+     @spots = Spot.star_count
+    else
+     @spots = Spot.page(params[:page])
+    end
 
   def new
     @spot = Spot.new

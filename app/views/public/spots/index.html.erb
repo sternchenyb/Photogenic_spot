@@ -9,6 +9,11 @@
     </div>
     <div class="col-md-9">
       <div class="card-list-container py-5 row">
+
+        <%= link_to '新しい順', spots_path(latest: "true") %>
+        <%= link_to '古い順', spots_path(old: "true") %>
+        <%= link_to '評価の高い順', spots_path(star_count: "true") %>
+
         <% @spots.each do |spot| %>
           <div class="card mx-auto mt-4 shadow-lg card-box">
            <div class="card-body">
@@ -51,6 +56,7 @@
                     <%= link_to "COMMENT" , spot_path(spot.id), class:"text-dark" %>
                   <% end %>
                 </span>
+                <%= l spot.created_at %>
               </div>
             </div>
           </div>
