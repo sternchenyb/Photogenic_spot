@@ -2,14 +2,15 @@
   <% spot.comments.each do |comment| %>
     <tbody>
       <tr>
-        <td><%= link_to users_my_page_path(comment.user_id) do %>
-              <%= image_tag spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
-            <% end %></br>
-            <%= link_to comment.user.name, users_my_page_path(comment.user_id) %>
+        <td>
+          <%= image_tag spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %><br>
+          <%= link_to users_my_page_path(comment.user_id), class:"text-dark" do %>
+            <span><i class="fas fa-user"></i> By <%= comment.user.name %> </span>
+          <% end %>
         </td>
         <td><%= comment.comment %></td>
         <% if comment.user_id == current_user.id %>
-        <td><%= link_to "DELETE", spot_comment_path(comment.id), method: :delete , remote: true, class: "btn btn-danger" %></td>
+        <td><%= link_to "DELETE", spot_comment_path(spot,comment.id), method: :delete , remote: true, class: "btn btn-danger" %></td>
         <% end %>
       </tr>
     </tbody>

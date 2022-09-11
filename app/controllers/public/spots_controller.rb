@@ -1,15 +1,4 @@
 class Public::SpotsController < ApplicationController
-    
-    # 観光地を評価順で表示
-    if params[:latest]
-     @spots = Spot.latest
-    elsif params[:old]
-     @spots = Spot.old
-    elsif params[:star_count]
-     @spots = Spot.star_count
-    else
-     @spots = Spot.page(params[:page])
-    end
 
   def new
     @spot = Spot.new
@@ -18,6 +7,17 @@ class Public::SpotsController < ApplicationController
   def index
     @spots = Spot.page(params[:page])
     @genres = Genre.all
+
+    # 観光地を評価順で表示
+    if params[:latest]
+     @spots = Spot.latest.page(params[:page])
+    elsif params[:old]
+     @spots = Spot.old.page(params[:page])
+    elsif params[:star_count]
+     @spots = Spot.star_count.page(params[:page])
+    else
+     @spots = Spot.page(params[:page])
+    end
   end
 
   def show
@@ -28,10 +28,14 @@ class Public::SpotsController < ApplicationController
     @comments = Comment.all
   end
 
+  def edit
+      @spot = Spot.find(params[:id])
+  end
+
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
-   if @spot.save
+   if @spot.save!
      flash[:notice] = "You have created spot successfully."
     redirect_to spot_path(@spot)
    else

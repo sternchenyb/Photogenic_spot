@@ -7,13 +7,11 @@
       </aside>
       <%= link_to "CREATE SPOT",new_spot_path, class:"btn btn-sm btn-primary" %>
     </div>
-    <div class="col-md-9">
-      <div class="card-list-container py-5 row">
-
+    <div class="col-md-9 text-right">
         <%= link_to '新しい順', spots_path(latest: "true") %>
         <%= link_to '古い順', spots_path(old: "true") %>
         <%= link_to '評価の高い順', spots_path(star_count: "true") %>
-
+      <div class="card-list-container py-5 row">
         <% @spots.each do |spot| %>
           <div class="card mx-auto mt-4 shadow-lg card-box">
            <div class="card-body">
@@ -65,6 +63,5 @@
         <%= paginate @spots %>
       </div>
     </div>
-
   </div>
 </div>

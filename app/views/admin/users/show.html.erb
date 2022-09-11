@@ -29,40 +29,45 @@
      </table>
     </div>
 
-    <div class="col-md-8 offset-md-1">
-     <% @spots.each do |spot| %>
-      <table class="table table-hover table-inverse">
-        <tbody>
-         <tr>
-          <td><%= link_to user_path(spot.user_id) do %>
-              <%= image_tag spot.user.get_profile_image(100,100) %>
-              <% end %><br>
-              <%= link_to spot.user.name, user_path(@spot.user_id) %></td>
-          <td><%= link_to spot.title, spot_path %></td>
-          <td><%= spot.body %></td>
-          <td class="favorite-btn"><%= render 'favorites/favorite-btn', spot: spot %></td>
-          <td>コメント件数：<%= spot.spot_comments.count %></td>
-          <td><div id="star-rate<%= spot.id %>"></div>
-            <script>
-               $('#star-rate<%= spot.id %>').raty({
-                 size      : 36,
-                 starOff   : '<%= asset_path('star-off.png') %>',
-                 starOn    : '<%= asset_path('star-on.png') %>',
-                 half      : false,
-                 readOnly: true,
-                 score: <%= spot.star %>,
-               });
-            </script>
-           </td>
-          <% if spot.user == current_user %>
-          <td><%= link_to "Edit", edit_spot_path(spot.id), class:"btn btn-sm btn-success" %></td>
-          <td><%= link_to "Destroy",spot_path(spot.id),class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "Are you sure？" %></td>
-          <% end %>
-         </tr>
-        </tbody>
-      </table>
-      <% end %>
-      <%= paginate @spots %>
-    </div>
+<div class="col-md-9">
+      <div class="card-list-container py-5 row">
+        <% @spots.each do |spot| %>
+          <div class="card mx-auto mt-4 shadow-lg card-box">
+          <div class="card-body">
+            <div class="row">
+              <div id="star-rate<%= spot.id %>"></div>
+                <script>
+                 $('#star-rate<%= spot.id %>').raty({
+                   size      : 36,
+                   starOff   : '<%= asset_path('star-off.png') %>',
+                   starOn    : '<%= asset_path('star-on.png') %>',
+                   half      : false,
+                   readOnly: true,
+                   score: <%= spot.star %>,
+                 });
+                </script>
+              <%= link_to admin_spot_path(spot.id) do %>
+               <%= image_tag spot.image.variant( resize: "300x280^", gravity: "center" ) %>
+              <% end %>
+              <div class="col-3">
+                <%= image_tag spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
+              </div>
+              <div class="col-9">
+                <p class="card-title">
+                  <%= link_to(admin_spot_path(spot.id), class:"text-dark") do %>
+                    <strong><i class="far fa-flag"></i><span> <%= spot.name %></span></strong>
+                  <% end %>
+                </p>
+                <p class="card-text">ADDRESS：<%= spot.address %></p>
+                <%= link_to(admin_user_path(spot.user_id), class:"text-dark") do %>
+                <span><i class="fas fa-user"></i> By <%= spot.user.name %> </span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <%= paginate @spots %>
+      </div>
   </div>
 </div>

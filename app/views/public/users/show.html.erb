@@ -35,6 +35,17 @@
           <div class="card mx-auto mt-4 shadow-lg card-box">
           <div class="card-body">
             <div class="row">
+              <div id="star-rate<%= spot.id %>"></div>
+                <script>
+                 $('#star-rate<%= spot.id %>').raty({
+                   size      : 36,
+                   starOff   : '<%= asset_path('star-off.png') %>',
+                   starOn    : '<%= asset_path('star-on.png') %>',
+                   half      : false,
+                   readOnly: true,
+                   score: <%= spot.star %>,
+                 });
+                </script>
               <%= link_to spot_path(spot.id) do %>
                <%= image_tag spot.image.variant( resize: "300x280^", gravity: "center" ) %>
               <% end %>
@@ -52,7 +63,11 @@
                 <span><i class="fas fa-user"></i> By <%= spot.user.name %> ｜ </span>
                 <% end %>
                 <span>
-
+                  <% if spot.comments.any? %>
+                    <%= link_to "VIEW ALL #{spot.comments.count} COMMENTS", spot_path(spot.id), class:"text-dark" %>
+                  <% else %>
+                    <%= link_to "COMMENT" , spot_path(spot.id), class:"text-dark" %>
+                  <% end %>
                 </span>
               </div>
             </div>
