@@ -1,16 +1,14 @@
 class Admin::CommentsController < ApplicationController
      before_action :authenticate_admin!
-  def show
-    @comment = Comment.find(params[:id])
+  def index
     @user = User.find(params[:user_id])
-    @spots = @user.spots.all
+    #@spots = @user.spots.all
   end
 
   def destroy
-     @spot = Spot.find(params[:spot_id])
      @comment = Comment.find(params[:id])
      @comment.destroy
-     redirect_to admin_spot_path
+     redirect_to admin_spot_path(@comment.spot)
   end
 
   private

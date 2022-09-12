@@ -45,7 +45,9 @@ devise_for :user, controllers: {
    root to: "homes#top"
    resources :spots, only: [:index,:create,:show,:edit,:update,:destroy]
    resources :genres, only: [:index,:create,:edit,:update,:destroy]
-   resources :users, only: [:index,:show,:edit,:update]
-   resources :comments, only: [:show,:edit,:update,:destroy]
+   resources :users, only: [:index,:show,:edit,:update] do
+      resources :comments, only: [:index]
+    end
+   resources :comments, only: [:edit,:update,:destroy]
  end
 end

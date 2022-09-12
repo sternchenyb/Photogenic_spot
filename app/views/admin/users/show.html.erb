@@ -24,7 +24,7 @@
        <td>　　　　　<%= @user.email %></td>
       </tr>
       <tr>
-        <td><%= link_to 'COMMENTS', admin_comment_path, class: "btn btn-sm btn-dark rounded-pill" %></td>
+        <td><%= link_to 'COMMENTS', admin_user_comments_path(@user), class: "btn btn-sm btn-dark rounded-pill" %></td>
       </tr>
       <tr>
        <td><%= link_to 'EDIT', edit_admin_user_path, class: "btn btn-sm btn-success  rounded-pill" %></td>

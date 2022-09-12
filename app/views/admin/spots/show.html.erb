@@ -40,7 +40,7 @@
                         <% end %>
                       </td>
                       <td><%= comment.comment %></td>
-                      <td><%= link_to "DELETE", admin_comment_path(@spot,comment.id), method: :delete , class: "btn btn-danger" %></td>
+                      <td><%= link_to "DELETE", admin_comment_path(comment.id), method: :delete , class: "btn btn-danger" %></td>
                     </tr>
                   </tbody>
                 <% end %>

@@ -2,27 +2,27 @@
   <div class="row no-gutters">
     <div class="col-md-5 col-lg-7 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">ADMIN SIGN IN</h5>
-      <div class="form-body p-4">
+      <div class="form-body p-4 ">
        <!-- log in form -->
         <%= form_with model: @admin, url: admin_session_path do |f| %>
-          <div class="input-group mb-3 mt-4">
+          <div class="input-group mb-3 mt-4 text-center">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          　　　　　　　  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
-          <div class="input-group mb-3 mt-4">
+          <div class="input-group mb-3 mt-4 text-center">
             <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password" %>
+         　　　　　   <%= f.password_field :password, autocomplete: "current-password" %>
           </div>
-          <div class="input-group mb-3 mt-4">
+          <div class="input-group mb-3 mt-4 text-right">
             <% if devise_mapping.rememberable? %>
             <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+          　  <%= f.label :remember_me %>
             <% end %>
           </div>
           <hr>
             <%= f.submit 'SIGN IN', class:"btn btn-lg btn-block btn-info mt-4" %>
         <% end %>
-    
+
         <%= render "public/shared/links" %>
       </div>
     </div>
