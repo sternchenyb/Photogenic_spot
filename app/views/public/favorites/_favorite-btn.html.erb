@@ -1,13 +1,18 @@
 <div id="favorite-<%= spot.id %>">
-  <% if spot.favorited_by?(current_user) %>
-   <%= link_to spot_favorites_path(spot),style:"color:red;", method: :delete, remote: true do %>
+  <% if user_signed_in? %>
+    <% if spot.favorited_by?(current_user) %>
+     <%= link_to spot_favorites_path(spot),style:"color:red;", method: :delete, remote: true do %>
+      <span class="fas fa-heart"></span>
+      <%= spot.favorites.count %>
+     <% end %>
+    <% else %>
+      <%= link_to spot_favorites_path(spot),style:"color:red;", method: :post, remote: true do %>
+       <span class="fas fa-heart"></span>
+       <%= spot.favorites.count %>
+      <% end %>
+    <% end %>
+  <% else %>
     <span class="fas fa-heart"></span>
     <%= spot.favorites.count %>
-   <% end %>
-  <% else %>
-    <%= link_to spot_favorites_path(spot),style:"color:red;", method: :post, remote: true do %>
-     <span class="fas fa-heart"></span>
-     <%= spot.favorites.count %>
-    <% end %>
   <% end %>
 </div>
