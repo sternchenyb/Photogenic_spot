@@ -23,7 +23,7 @@
               <% end %>
             </div>
             <div class="col-10">
-              
+
               <%= render 'public/favorites/favorite-btn', spot: @spot %>
                 <div id="star-rate<%= @spot.id %>"></div>
                  <script>
@@ -39,8 +39,8 @@
               <p class="card-title">
                 <strong><i class="far fa-flag"></i><span> <%= @spot.name %></span></strong>
               </p>
-              <p class="card-text">CAPTION：<%= @spot.caption %></p>
-              <p class="card-text">ADDRESS: <%= @spot.address %></p>
+              <p class="card-text">CAPTION:<br> <%= @spot.caption %></p>
+              <p class="card-text">ADDRESS:<br> <%= @spot.address %></p>
               <p class="text-right">
                 <% if @spot.user == current_user %>
                   <%= link_to "Edit", edit_spot_path(@spot.id), class:"btn btn-sm btn-light" %>

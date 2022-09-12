@@ -3,7 +3,7 @@
     <tbody>
       <tr>
         <td>
-          <%= image_tag spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %><br>
+          <%= image_tag comment.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %><br>
           <%= link_to users_my_page_path(comment.user_id), class:"text-dark" do %>
             <span><i class="fas fa-user"></i> By <%= comment.user.name %> </span>
           <% end %>

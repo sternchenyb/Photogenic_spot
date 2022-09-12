@@ -1,7 +1,9 @@
 class Admin::SpotsController < ApplicationController
    before_action :authenticate_admin!
+   
   def show
    @spot = Spot.find(params[:id])
+   @comments = Comment.all
   end
   
   def index

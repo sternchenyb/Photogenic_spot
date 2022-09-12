@@ -4,6 +4,12 @@ class Public::SpotsController < ApplicationController
     @spot = Spot.new
   end
 
+  def search
+    @spots = Spot.all.search(params[:keyword])
+    @genres = Genre.all
+    @search_word = "#{params[:keyword]}"
+  end
+
   def index
     @spots = Spot.page(params[:page])
     @genres = Genre.all

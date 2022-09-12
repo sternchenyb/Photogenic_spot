@@ -24,12 +24,15 @@
        <td>　　　　　<%= @user.email %></td>
       </tr>
       <tr>
+        <td><%= link_to 'COMMENTS', admin_comment_path, class: "btn btn-sm btn-dark rounded-pill" %></td>
+      </tr>
+      <tr>
        <td><%= link_to 'EDIT', edit_admin_user_path, class: "btn btn-sm btn-success  rounded-pill" %></td>
       </tr>
      </table>
     </div>
 
-<div class="col-md-9">
+    <div class="col-md-9">
       <div class="card-list-container py-5 row">
         <% @spots.each do |spot| %>
           <div class="card mx-auto mt-4 shadow-lg card-box">

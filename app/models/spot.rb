@@ -4,12 +4,20 @@ class Spot < ApplicationRecord
     belongs_to :genre
     has_many :comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
-    
+  
+  #一覧画面でのソート機能
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :star_count, -> {order(star: :desc)}
   
+  #いいね機能
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+  
+  #一覧画面でのキーワード検索機能
+  def self.search(search_word) 
+   Spot.where(["name LIKE(?) OR caption LIKE(?) OR address LIKE(?)", 
+                 "%#{search_word}%", "%#{search_word}%", "%#{search_word}%" ])
   end
 end

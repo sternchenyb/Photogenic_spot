@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 py-5">
       <h4 class="bg text-center"><%= @user.name %>'s DETAIL</h4>
      <table>
       <tr>
@@ -24,18 +24,33 @@
        <td>　　　　　<%= @user.email %></td>
       </tr>
       <tr>
-       <td><%= link_to 'EDIT', users_information_edit_path, class: "btn btn-sm btn-success  rounded-pill" %></td>
+       <td><%= link_to 'EDIT', users_information_edit_path, class: "btn btn-sm btn-dark  rounded-pill" %></td>
       </tr>
      </table>
     </div>
 
-<div class="col-md-9">
+<div class="col-md-9 text-right">
       <div class="card-list-container py-5 row">
         <% @spots.each do |spot| %>
           <div class="card mx-auto mt-4 shadow-lg card-box">
-          <div class="card-body">
+           <div class="card-body">
             <div class="row">
-              <div id="star-rate<%= spot.id %>"></div>
+              <div class="spot-image mx-auto">
+               <%= link_to spot_path(spot.id) do %>
+                <%= image_tag spot.image.variant( resize: "300x280^", gravity: "center" ) %>
+               <% end %>
+              </div>
+              <div class="col-4">
+                <%= image_tag spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
+              </div>
+              <div class="col-8">
+                <p class="card-title">
+                  <%= render 'public/favorites/favorite-btn', spot: spot %>
+                  <%= link_to(spot_path(spot.id), class:"text-dark") do %>
+                    <strong><i class="far fa-flag"></i><span> <%= spot.name %></span></strong>
+                  <% end %>
+                </p>
+                <div id="star-rate<%= spot.id %>"></div>
                 <script>
                  $('#star-rate<%= spot.id %>').raty({
                    size      : 36,
@@ -46,19 +61,8 @@
                    score: <%= spot.star %>,
                  });
                 </script>
-              <%= link_to spot_path(spot.id) do %>
-               <%= image_tag spot.image.variant( resize: "300x280^", gravity: "center" ) %>
-              <% end %>
-              <div class="col-3">
-                <%= image_tag spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
               </div>
-              <div class="col-9">
-                <p class="card-title">
-                  <%= link_to(spot_path(spot.id), class:"text-dark") do %>
-                    <strong><i class="far fa-flag"></i><span> <%= spot.name %></span></strong>
-                  <% end %>
-                </p>
-                <p class="card-text">ADDRESS：<%= spot.address %></p>
+              <div class="col-10">
                 <%= link_to(users_my_page_path(spot.user_id), class:"text-dark") do %>
                 <span><i class="fas fa-user"></i> By <%= spot.user.name %> ｜ </span>
                 <% end %>
@@ -69,6 +73,7 @@
                     <%= link_to "COMMENT" , spot_path(spot.id), class:"text-dark" %>
                   <% end %>
                 </span>
+                <%= l spot.created_at %>
               </div>
             </div>
           </div>
