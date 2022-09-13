@@ -1,29 +1,29 @@
 <div class="container">
   <div class="row no-gutters">
+    <%= render 'public/shared/error_messages', user: @user %>
     <div class="col-md-5 col-lg-7 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">SIGN UP</h5>
-      <div class="form-body p-4">
+      <div class="form-body p-4 ">
         <!-- sign up form -->
           <%= form_with model: @user, url: user_registration_path do |f| %>
-            <%= render "public/shared/error_messages", resource: resource %>
            <div class="input-group mb-3 mt-4">
-            <%= f.label :name %><br>
-                   <%= f.text_field :name %>
+            <%= f.label :name, class: "ml-xl-5" %>
+            <%= f.text_field :name, class: "ml-xl-5"%>
            </div>
            <div class="input-group mb-3 mt-4">
-            <%= f.label :email %><br />
-                   <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.label :email, class: "ml-xl-5" %>
+            <%= f.email_field :email, class: "ml-xl-5", autofocus: true, autocomplete: "email" %>
            </div>
            <div class="input-group mb-3 mt-4">
-              <%= f.label :password %>
+              <%= f.label :password, class: "ml-xl-5" %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
-                   <%= f.password_field :password, autocomplete: "new-password" %>
+              <%= f.password_field :password, class: "ml-xl-5", autocomplete: "new-password" %>
            </div>
            <div class="input-group mb-3 mt-4">
-              <%= f.label :password_confirmation %><br />
-                   <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              <%= f.label :password_confirmation, class: "ml-xl-5" %>
+              <%= f.password_field :password_confirmation, class: "ml-xl-5", autocomplete: "new-password" %>
            </div>
           <hr>
             <%= f.submit 'SIGN UP', class:"btn btn-lg btn-block btn-info mt-4" %>

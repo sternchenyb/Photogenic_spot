@@ -25,9 +25,7 @@ devise_for :user, controllers: {
 
 
  scope module: :public do
-   get 'maps/index'
-   root to: 'maps#index'
-   resources :maps, only: [:index]
+   root to: 'homes#top'
    get 'about' => 'homes#about'
    get 'users/cancel' => 'users#cancel'
    patch 'users/withdraw' => 'users#withdraw'
@@ -42,7 +40,7 @@ devise_for :user, controllers: {
    end
    resources :genres, only: [:show]
  end
- 
+
  namespace :admin do
    root to: "homes#top"
    resources :spots, only: [:index,:create,:show,:edit,:update,:destroy]

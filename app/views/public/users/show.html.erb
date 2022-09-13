@@ -1,35 +1,21 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3 py-5">
-      <h4 class="bg text-center"><%= @user.name %>'s DETAIL</h4>
-     <table>
-      <tr>
-       <td>USER ID</td>
-       <td>　　　　　<%= @user.id %></td>
-      </tr>
-      <tr>
-       <td>NAME</td>
-       <td>　　　　　<%= @user.name %></td>
-      </tr>
-      <tr>
-       <td>INTRODUCTION</td>
-       <td>　　　　　<%= @user.introduction %></td>
-      </tr>
-      <tr>
-       <td>IMAGE</td>
-       <td>          <%= image_tag @user.get_profile_image %></td>
-      </tr>
-      <tr>
-       <td>EMAIL</td>
-       <td>　　　　　<%= @user.email %></td>
-      </tr>
-      <tr>
-       <td><%= link_to 'EDIT', users_information_edit_path, class: "btn btn-sm btn-dark  rounded-pill" %></td>
-      </tr>
-     </table>
+    <div class="col-md-3 py-5 mx-auto">
+      <h5 class="text-dark bg-light p-3 mb-0 text-center mx-auto"><%= @user.name %>'s DETAIL</h5>
+       <div class="col-2 text-center">
+          <%= image_tag @user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
+          <%= @user.name %>
+       </div>
+       <div class="col-10">
+         INTRODUCTION:
+         <p><%= @user.introduction %></p>
+         EMAIL:
+         <p><%= @user.email %></p>
+         <%= link_to 'EDIT', users_information_edit_path, class: "btn btn-sm btn-dark  rounded-pill" %>
+      </div>
     </div>
 
-<div class="col-md-9 text-right">
+    <div class="col-md-9 text-right">
       <div class="card-list-container py-5 row">
         <% @spots.each do |spot| %>
           <div class="card mx-auto mt-4 shadow-lg card-box">
@@ -81,5 +67,6 @@
         <% end %>
         <%= paginate @spots %>
       </div>
+    </div>
   </div>
 </div>

@@ -1,11 +1,11 @@
-<%= render 'public/shared/flash_messages' %>
+<%= flash[:notice] %>
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-3 sidebar">
+    <div class="col-md-3 sidebar text-center px-0 my-5">
+      <%= link_to "NEW SPOT",new_spot_path, class:"btn btn-lg btn-info" %>
       <aside class="shadow-lg rounded px-0 my-5">
         <%= render 'public/genres/search', genres: @genres %>
       </aside>
-      <%= link_to "CREATE SPOT",new_spot_path, class:"btn btn-sm btn-primary" %>
     </div>
 
     <div class="col-lg-9 card-list-container py-2">
