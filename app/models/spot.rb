@@ -1,9 +1,9 @@
 class Spot < ApplicationRecord
-  
+
     validates :name, presence: true
-    validates :caption, presence: true, length: { maximum: 200 }
+    validates :caption, presence: true, length: { maximum: 500 }
     validates :address, presence: true
-  
+
     has_one_attached :image
     belongs_to :user
     belongs_to :genre
@@ -28,5 +28,5 @@ class Spot < ApplicationRecord
    Spot.where(["name LIKE(?) OR caption LIKE(?) OR address LIKE(?)",
                  "%#{search_word}%", "%#{search_word}%", "%#{search_word}%" ])
   end
-  
+
 end

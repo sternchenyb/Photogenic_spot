@@ -41,6 +41,7 @@
               <p class="card-text">CAPTION:<br> <%= @spot.caption %></p>
               <p class="card-text">ADDRESS:<br> <%= @spot.address %></p>
               <p class="text-right">
+                <%= l @spot.created_at, format: :short %>
                 <% if @spot.user == current_user %>
                   <%= link_to "Edit", edit_spot_path(@spot.id), class:"btn btn-sm btn-light" %>
                   <%= link_to "Destroy",spot_path(@spot.id),class:"btn btn-sm btn-dark", method: :delete, "data-confirm" => "Are you sure？" %>
