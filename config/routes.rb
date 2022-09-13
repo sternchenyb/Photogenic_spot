@@ -25,7 +25,9 @@ devise_for :user, controllers: {
 
 
  scope module: :public do
-   root to: "homes#top"
+   get 'maps/index'
+   root to: 'maps#index'
+   resources :maps, only: [:index]
    get 'about' => 'homes#about'
    get 'users/cancel' => 'users#cancel'
    patch 'users/withdraw' => 'users#withdraw'
