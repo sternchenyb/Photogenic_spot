@@ -32,6 +32,7 @@ class Public::SpotsController < ApplicationController
     @user = @spot.user
     @comment = Comment.new
     @comments = Comment.all
+    gon.spot = @spot
   end
 
   def edit

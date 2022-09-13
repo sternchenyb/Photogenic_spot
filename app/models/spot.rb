@@ -4,6 +4,8 @@ class Spot < ApplicationRecord
     belongs_to :genre
     has_many :comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
+    geocoded_by :address
+    after_validation :geocode, if: :address_changed?
 
   #一覧画面でのソート機能
   scope :latest, -> {order(created_at: :desc)}
@@ -21,4 +23,5 @@ class Spot < ApplicationRecord
    Spot.where(["name LIKE(?) OR caption LIKE(?) OR address LIKE(?)",
                  "%#{search_word}%", "%#{search_word}%", "%#{search_word}%" ])
   end
+
 end

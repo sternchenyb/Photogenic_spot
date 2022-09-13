@@ -72,3 +72,8 @@ end
 gem 'devise'
 gem 'kaminari','~> 1.2.1'
 gem "enum_help"
+
+#コントローラーで定義したインスタンス変数をビューのJavaScript内で使用出来る様にする。
+gem 'gon'
+#住所から緯度経度を算出する。
+gem 'geocoder'

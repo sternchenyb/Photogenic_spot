@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+  .sidebar {
+    max-width: 220px;
+    margin-right: auto;
+  }
+
+  .card-box {
+    width: 410px;
+  }
+
+  .map {
+    height: 500px;
+    width: 100%;
+  }
