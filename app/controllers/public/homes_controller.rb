@@ -1,8 +1,9 @@
 class Public::HomesController < ApplicationController
   def top
-    gon.spots = Spot.all
+    @randoms = Spot.order("RANDOM()").limit(5)
   end
 
   def about
+    gon.spots = Spot.all
   end
 end
