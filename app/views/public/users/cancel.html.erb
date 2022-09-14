@@ -1,11 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-10 mx-auto text-center">
-     <h3>CANCEL MY ACCOUNT</h3>
+     <h5 class="text-dark bg-light p-3 mb-0 text-center">CANCEL ACCOUNT</h5>
+     <div class="warning alert shadow-lg">
+        <p><h5>BY CANCELLING, ALL YOUR DATA WILL BE PERMANENTRLY DELETED.</h5></p>
+        <p><h3>DO YOU STILL WANT TO CANCEL?</h3></p>
 
-      <div class="text-center">
-        <%= link_to "BACK TO MY ACCOUNT", users_my_page_path, class: "btn btn-primary rounded-pill" %>
-        <%= link_to "CANCEL MY ACCOUNT", users_withdraw_path, data: { confirm: "ARE YOU SURE?" }, method: :patch, class: "btn btn-danger rounded-pill" %>
+        <div class="text-center">
+          <%= link_to "BACK TO MY ACCOUNT", user_path(@user.id), class: "btn btn-info rounded-pill" %>
+          <%= link_to "CANCEL MY ACCOUNT", users_withdraw_path, data: { confirm: "ARE YOU SURE?" }, method: :patch, class: "btn btn-dark rounded-pill" %>
+        </div>
       </div>
     </div>
   </div>

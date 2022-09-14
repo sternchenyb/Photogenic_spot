@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row py-5">
+    <div class="col-6 shadow-lg">
+      <h5 class="text-dark bg-light p-3 mb-0 text-center">FOLLOWING</h5>
+      <% if @followings.exists? %>
+        <% @followings.each do |following| %>
+          <table class="table-hover mx-auto">
+            <tbody>
+              <tr>
+                <td>
+                  <%= image_tag @user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
+                </td>
+                <td>
+                  <%= link_to(user_path(following.id), class:"text-dark") do %>
+                    <%= following.name %>
+                  <% end %>
+                </td>
+                <td>POSTS: <%= following.spots.count %></td>
+                <td><%= link_to "REMOVE", user_relationships_path(following.id), class:"btn btn-sm btn-light rounded-pill", method: :delete %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      <% else %>
+        <p class="text-center mx-auto">WHEN YOU FOLLOW OTHER ACCOUNT,<br> THEY WILL SHOW UP HERE.</p>
+      <% end %>
+    </div>
+    <div class="col-6 shadow-lg">
+      <h5 class="text-dark bg-light p-3 mb-0 text-center">FOLLOWERS</h5>
+            <% if @followers.exists? %>
+        <% @followers.each do |follower| %>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <%= image_tag follower.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
+                </td>
+                <td>
+                  <%= link_to(users_my_page_path(follower.id), class:"text-dark") do %>
+                    <%= follower.name %>
+                  <% end %>
+                </td>
+                <td>POSTS: <%= follower.spot.count %></td>
+                <td><%= link_to "REMOVE", user_relationships_path(follower.id), class:"btn btn-sm btn-light rounded-pill", method: :delete %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      <% else %>
+        <p class="text-center mx-auto">WHEN SOMEONE FOLLOWS THIS ACCOUNT,<br> THEY WILL SHOW UP HERE.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

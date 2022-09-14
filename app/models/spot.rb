@@ -1,21 +1,22 @@
 class Spot < ApplicationRecord
 
-    validates :name, presence: true
-    validates :caption, presence: true, length: { maximum: 500 }
-    validates :address, presence: true
+  validates :name, presence: true
+  validates :caption, presence: true, length: { maximum: 500 }
+  validates :address, presence: true
 
-    has_one_attached :image
-    belongs_to :user
-    belongs_to :genre
-    has_many :comments, dependent: :destroy
-    has_many :favorites, dependent: :destroy
-    geocoded_by :address
-    after_validation :geocode, if: :address_changed?
+  has_one_attached :image
+  belongs_to :user
+  belongs_to :genre
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   #一覧画面でのソート機能
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :star_count, -> {order(star: :desc)}
+
 
   #いいね機能
   def favorited_by?(user)

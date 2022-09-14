@@ -1,7 +1,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class="col-md-5 col-lg-7 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
-      <%= render 'public/shared/error_messages', user: @user %>
+      <%= render 'public/shared/user_error_messages', user: @user %>
       <h5 class="text-dark bg-light p-4 mb-0">EDIT PROFILE</h5>
       <div class="form-body p-4">
        <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
@@ -26,8 +26,8 @@
                <%= f.password_field :password, class: "ml-xl-5", autocomplete: "current-password" %>
           </div>
           <hr>
-          <%= f.submit "UPDATE", class: "btn btn-md btn-info rounded-pill" %>
-          <%= link_to "CANCEL MEMBERSHIP", users_cancel_path, class: "btn btn-md btn-danger rounded-pill" %>
+          <%= f.submit "UPDATE", class: "btn btn-lg btn-block btn-info rounded-pill" %>
+          <%= link_to "CANCEL MEMBERSHIP", users_cancel_path, class: "btn btn-lg btn-block btn-danger rounded-pill" %>
         <% end %>
       </div>
     </div>

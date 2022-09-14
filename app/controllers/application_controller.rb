@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope.is_a?(Admin)
         admin_users_path
     else
-        users_my_page_path
+        user_path(current_user)
     end
   end
 
