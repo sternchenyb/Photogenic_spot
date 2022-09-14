@@ -12,8 +12,9 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+import "../stylesheets/slick"
+import "../stylesheets/slick-theme"
 import '@fortawesome/fontawesome-free/js/all'
-
 
 Rails.start()
 Turbolinks.start()
@@ -22,4 +23,6 @@ ActiveStorage.start()
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
 require('jquery')
-require("./slick") 
+require('packs/slick-sample')
+
+

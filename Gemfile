@@ -77,3 +77,4 @@ gem "enum_help"
 gem 'gon'
 #住所から緯度経度を算出する。
 gem 'geocoder'
+gem "jquery-rails"

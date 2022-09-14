@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ @import url("slick");
+ @import url("slick-theme");
 
   .sidebar {
     max-width: 220px;
