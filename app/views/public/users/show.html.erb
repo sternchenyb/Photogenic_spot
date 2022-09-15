@@ -7,13 +7,16 @@
           <%= image_tag @user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
           <p><strong><i class="fas fa-user"></i></strong><%= @user.name %></p>
        </div>
-       <div class="col-md-8">
+       <div class="col-mx">
          <strong>INTRODUCTION:</strong>
          <p><%= @user.introduction %></p>
          <strong>EMAIL:</strong>
          <p><%= @user.email %></p>
          <strong>POSTS:</strong>
          <p class="text-right"><%= @user.spots.count %></p>
+         <%= link_to(favorites_user_path(@user.id), class:"text-dark") do %>
+           <p><strong>YOUR LIKES</strong></p>
+         <% end %>
          <%= link_to(user_follow_path(@user.id), class:"text-dark") do %>
             <strong>FOLLOWING:</strong>
          <% end %>

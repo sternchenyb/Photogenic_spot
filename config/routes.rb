@@ -33,7 +33,6 @@ Rails.application.routes.draw do
    get 'about' => 'homes#about'
    get 'users/cancel' => 'users#cancel'
    patch 'users/withdraw' => 'users#withdraw'
-   #get 'users/my_page' => 'users#show'
    get 'users/information/edit' => 'users#edit'
    patch 'users/information' => 'users#update'
    #delete '/spots/destroy_all' => 'spots#destroy_all'
@@ -46,6 +45,9 @@ Rails.application.routes.draw do
    resources :users, only: [:withdraw,:cancel,:update,:destroy,:create,:edit,:show,:new]  do
     resource :relationships, only: [:create, :destroy]
     get 'follow' => 'relationships#follow', as: 'follow'
+    member do
+      get :favorites
+    end
    end
  end
 

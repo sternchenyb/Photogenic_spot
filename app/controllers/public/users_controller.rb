@@ -37,6 +37,13 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:spot_id)
+    @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).page(params[:page])
+    @genres = Genre.all
+  end
+
   private
 
   def user_params
