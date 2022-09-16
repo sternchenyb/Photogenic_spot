@@ -1,13 +1,10 @@
 <%= flash[:notice] %>
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
-    <div class="col-md-3 py-5 mx-auto">
+    <div class="col-md-3 sidebar mx-auto px-0 my-5">
       <h5 class="text-dark bg-light p-3 mb-0 text-center mx-auto"><%= @user.name %>'s DETAIL</h5>
-       <div class="col-md-4 text-center">
           <%= image_tag @user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
           <p><strong><i class="fas fa-user"></i></strong><%= @user.name %></p>
-       </div>
-       <div class="col-mx">
          <strong>INTRODUCTION:</strong>
          <p><%= @user.introduction %></p>
          <strong>EMAIL:</strong>
@@ -38,60 +35,15 @@
            <%= link_to "FOLLOW", new_user_registration_path, class:"btn btn-sm btn-info rounded-pill" %>
          <% end %>
       </div>
-    </div>
-
-    <div class="col-md-9 text-right">
-      <div class="card-list-container py-5 row">
-        <% @spots.each do |spot| %>
-          <div class="card mx-auto mt-4 shadow-lg card-box">
-           <div class="card-body">
-            <div class="row">
-              <div class="spot-image mx-auto">
-               <%= link_to spot_path(spot.id) do %>
-                <%= image_tag spot.image.variant( resize: "300x280^", gravity: "center" ) %>
-               <% end %>
-              </div>
-              <div class="col-4">
-                <%= image_tag spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
-              </div>
-              <div class="col-8">
-                <p class="card-title">
-                  <%= render 'public/favorites/favorite-btn', spot: spot %>
-                  <%= link_to(spot_path(spot.id), class:"text-dark") do %>
-                    <strong><i class="far fa-flag"></i><span> <%= spot.name %></span></strong>
-                  <% end %>
-                </p>
-                <div id="star-rate<%= spot.id %>"></div>
-                <script>
-                 $('#star-rate<%= spot.id %>').raty({
-                   size      : 36,
-                   starOff   : '<%= asset_path('star-off.png') %>',
-                   starOn    : '<%= asset_path('star-on.png') %>',
-                   half      : false,
-                   readOnly: true,
-                   score: <%= spot.star %>,
-                 });
-                </script>
-              </div>
-              <div class="col-10">
-                <%= link_to(user_path(spot.user_id), class:"text-dark") do %>
-                <span><i class="fas fa-user"></i> By <%= spot.user.name %> ｜ </span>
-                <% end %>
-                <span>
-                  <% if spot.comments.any? %>
-                    <%= link_to "VIEW ALL #{spot.comments.count} COMMENTS", spot_path(spot.id), class:"text-dark" %>
-                  <% else %>
-                    <%= link_to "COMMENT" , spot_path(spot.id), class:"text-dark" %>
-                  <% end %>
-                </span>
-                <%= l spot.created_at, format: :short %>
-              </div>
-            </div>
-          </div>
+      <div class="col-md-9 card-list-container py-2">
+        <h5 class="text-dark bg-light p-3 mb-0 text-center"><%= @user.name %> 'S SPOTS</h5>
+        <div class="sorting spots text-right">
+          <%= link_to 'NEWEST', user_path(latest: "true"), class:"text-dark" %>
+          <%= link_to 'OLDEST', user_path(old: "true") , class:"text-dark"%>
+          <%= link_to 'RANK', user_path(star_count: "true") , class:"text-dark"%>
         </div>
-        <% end %>
+        <%= render'public/spots/index', spots: @spots %>
         <%= paginate @spots %>
       </div>
-    </div>
-  </div>
+   </div>
 </div>

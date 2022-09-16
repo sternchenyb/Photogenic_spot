@@ -1,68 +1,24 @@
-
 <div class="container">
   <div class="row">
-    <div class="col-md-3 sidebar">
+    <div class="col-md-3 sidebar text-center px-0 my-5">
+      <%= link_to "NEW SPOT",new_spot_path, class:"btn btn-lg btn-light" %>
       <aside class="shadow-lg rounded px-0 my-5">
         <%= render 'public/genres/search', genres: @genres %>
       </aside>
-      <%= link_to "CREATE SPOT",new_spot_path, class:"btn btn-sm btn-primary" %>
     </div>
-    <div class="col-md-9 text-right">
-      <div class="card-list-container py-5 row">
-        <% if @spots.exists? %>
-          <p>THERE IS <%= @spots.count %> RESULTS FOR "<%= @search_word %>".</p>
-        <% else %>
-          <p>SORRY, WE COULDN'T FIND ANY RESULTS.</p>
-        <% end %>
-         <% @spots.each do |spot| %>
-          <div class="card mx-auto mt-4 shadow-lg card-box">
-           <div class="card-body">
-            <div class="row">
-              <div class="spot-image mx-auto">
-               <%= link_to spot_path(spot.id) do %>
-                <%= image_tag spot.image.variant( resize: "300x280^", gravity: "center" ) %>
-               <% end %>
-              </div>
-              <div class="col-4">
-                <%= image_tag spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
-              </div>
-              <div class="col-8">
-                <p class="card-title">
-                  <%= render 'public/favorites/favorite-btn', spot: spot %>
-                  <%= link_to(spot_path(spot.id), class:"text-dark") do %>
-                    <strong><i class="far fa-flag"></i><span> <%= spot.name %></span></strong>
-                  <% end %>
-                </p>
-                <div id="star-rate<%= spot.id %>"></div>
-                <script>
-                 $('#star-rate<%= spot.id %>').raty({
-                   size      : 36,
-                   starOff   : '<%= asset_path('star-off.png') %>',
-                   starOn    : '<%= asset_path('star-on.png') %>',
-                   half      : false,
-                   readOnly: true,
-                   score: <%= spot.star %>,
-                 });
-                </script>
-              </div>
-              <div class="col-10">
-                <%= link_to(users_my_page_path(spot.user_id), class:"text-dark") do %>
-                <span><i class="fas fa-user"></i> By <%= spot.user.name %> ｜ </span>
-                <% end %>
-                <span>
-                  <% if spot.comments.any? %>
-                    <%= link_to "VIEW ALL #{spot.comments.count} COMMENTS", spot_path(spot.id), class:"text-dark" %>
-                  <% else %>
-                    <%= link_to "COMMENT" , spot_path(spot.id), class:"text-dark" %>
-                  <% end %>
-                </span>
-                <%= l spot.created_at %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% end %>
+    <div class="col-md-9 card-list-container py-2">
+      <% if @spots.exists? %>
+        <h3 class="text-dark bg-light p-3 mb-0 text-center">THERE IS <%= @spots.count %> RESULTS FOR "<%= @keyword %>"</h3>
+      <% else %>
+        <h3 class="text-dark bg-light p-3 mb-0 text-center">SORRY, WE COULDN'T FIND ANY RESULTS</h3>
+      <% end %>
+      <div class="sorting spots text-right">
+        <%= link_to 'NEWEST', search_path(latest: "true"), class:"text-dark" %>
+        <%= link_to 'OLDEST', search_path(old: "true") , class:"text-dark"%>
+        <%= link_to 'RANK', search_path(star_count: "true") , class:"text-dark"%>
       </div>
+      <%= render'public/spots/index', spots: @spots %>
+      <%= paginate @spots %>
     </div>
   </div>
 </div>

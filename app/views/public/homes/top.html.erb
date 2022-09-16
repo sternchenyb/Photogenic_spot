@@ -8,9 +8,9 @@
     </div>
     <div class="col-9 text-center shadow-lg py-3">
       <h3 class="text-dark bg-light p-3 mb-0 text-center">NOW, YOU CAN FIND PHOTOGENIC SPOTS EASIER.</h3>
-      <div class="slider">
+      <div class="slider py-3">
         <% @randoms.each do |random| %>
-          <%= link_to image_tag(random.image.variant(resize:"600x500^", gravity:"center")), spots_path(random.id), method: :get %>
+          <%= link_to image_tag(random.image.variant(resize:"600x500^", gravity:"center")), spot_path(random.id), method: :get %>
         <% end %>
       </div>
     </div>

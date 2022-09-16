@@ -5,9 +5,21 @@ class Public::SpotsController < ApplicationController
   end
 
   def search
-    @spots = Spot.all.search(params[:keyword])
+    @search_word = Spot.all.search(params[:keyword])
+    @spots = @search_word.page(params[:page])
     @genres = Genre.all
-    @search_word = "#{params[:keyword]}"
+    @keyword = "#{params[:keyword]}"
+
+      # 観光地を評価順で表示
+    if params[:latest]
+     @spots = @search_word.latest.page(params[:page])
+    elsif params[:old]
+     @spots = @search_word.old.page(params[:page])
+    elsif params[:star_count]
+     @spots = @search_word.star_count.page(params[:page])
+    else
+     @spots = @search_word.page(params[:page])
+    end
   end
 
   def index
@@ -74,6 +86,6 @@ class Public::SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:name,:address,:image,:caption,:genre_id,:star)
+    params.require(:spot).permit(:name,:address,:image,:caption,:genre_id,:star,:latitude,:longitude)
   end
 end

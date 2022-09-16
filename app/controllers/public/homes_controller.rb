@@ -6,5 +6,6 @@ class Public::HomesController < ApplicationController
 
   def about
     gon.spots = Spot.all
+    @spots = Spot.all
   end
 end

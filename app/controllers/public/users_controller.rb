@@ -42,6 +42,17 @@ class Public::UsersController < ApplicationController
     favorites = Favorite.where(user_id: @user.id).pluck(:spot_id)
     @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).page(params[:page])
     @genres = Genre.all
+
+      # 観光地を評価順で表示
+    if params[:latest]
+     @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).latest.page(params[:page])
+    elsif params[:old]
+     @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).old.page(params[:page])
+    elsif params[:star_count]
+     @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).star_count.page(params[:page])
+    else
+     @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).page(params[:page])
+    end
   end
 
   private

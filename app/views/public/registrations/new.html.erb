@@ -1,32 +1,28 @@
 <div class="container">
   <div class="row no-gutters">
     <%= render 'public/shared/user_error_messages', user: @user %>
-    <div class="col-md-5 col-lg-7 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">SIGN UP</h5>
       <div class="form-body p-4 ">
         <!-- sign up form -->
           <%= form_with model: @user, url: user_registration_path do |f| %>
            <div class="input-group mb-3 mt-4">
-            <%= f.label :name, class: "ml-xl-5" %>
-            <%= f.text_field :name, class: "ml-xl-5"%>
+            <%= f.label :name, class: "ml-xl-5" %>　　　　　　　　　　　<p><%= f.text_field :name, class: "ml-xl-5"%></p>
            </div>
            <div class="input-group mb-3 mt-4">
-            <%= f.label :email, class: "ml-xl-5" %>
-            <%= f.email_field :email, class: "ml-xl-5", autofocus: true, autocomplete: "email" %>
+            <%= f.label :email, class: "ml-xl-5" %>　　　　　　　　　　　<p><%= f.email_field :email, class: "ml-xl-5", autofocus: true, autocomplete: "email" %></p>
            </div>
            <div class="input-group mb-3 mt-4">
-              <%= f.label :password, class: "ml-xl-5" %>
+              <%= f.label :password, class: "ml-xl-5" %>　　　　　　　　　<p><%= f.password_field :password, class: "ml-xl-5", autocomplete: "new-password" %></p>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %><br />
-              <%= f.password_field :password, class: "ml-xl-5", autocomplete: "new-password" %>
+              <% end %>
            </div>
            <div class="input-group mb-3 mt-4">
-              <%= f.label :password_confirmation, class: "ml-xl-5" %>
-              <%= f.password_field :password_confirmation, class: "ml-xl-5", autocomplete: "new-password" %>
+              <%= f.label :password_confirmation, class: "ml-xl-5" %>　　　<p><%= f.password_field :password_confirmation, class: "ml-xl-5", autocomplete: "new-password" %></p>
            </div>
           <hr>
-            <%= f.submit 'SIGN UP', class:"btn btn-lg btn-block btn-info mt-4" %>
+            <%= f.submit 'SIGN UP', class:"btn btn-lg btn-block btn-light mt-4" %>
         <% end %>
         <%= render "public/shared/links" %>
       </div>

@@ -14,12 +14,12 @@
         <div class="card-body">
           <div class="row">
             <div class="col-12">
-              <%= image_tag @spot.image.variant( resize: "700x600^", gravity: "center" ) %>
+              <%= image_tag @spot.image.variant( resize: "800x700^", gravity: "center" ) %>
             </div>
             <div class="col-2 text-center">
               <%= image_tag @spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
               <%= link_to(user_path(@spot.user_id), class:"text-dark") do %>
-                  <span><i class="fas fa-user"></i> By <%= @spot.user.name %> </span>
+                  <p><i class="fas fa-user"></i> By <%= @spot.user.name %> </p>
               <% end %>
             </div>
             <div class="col-10">

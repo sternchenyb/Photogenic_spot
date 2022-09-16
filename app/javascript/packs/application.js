@@ -12,8 +12,6 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
-import "../stylesheets/slick"
-import "../stylesheets/slick-theme"
 import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()

@@ -1,25 +1,19 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-5 col-lg-7 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
       <%= render 'admin/shared/error_messages', admin: @admin %>
       <h5 class="text-dark bg-light p-4 mb-0">ADMIN SIGN IN</h5>
       <div class="form-body p-4 ">
        <!-- log in form -->
         <%= form_with model: @admin, url: admin_session_path do |f| %>
           <div class="input-group mb-3 mt-4">
-       　　　  <%= f.email_field :email, class: "ml-xl-5", autofocus: true, autocomplete: "email",placeholder:"EMAIL" %>
+       　　　　　　　　　　  <%= f.email_field :email, class: "ml-xl-5", autofocus: true, autocomplete: "email",placeholder:"EMAIL" %>
           </div>
           <div class="input-group mb-3 mt-4">
-        　   <%= f.password_field :password, class: "ml-xl-5", autocomplete: "current-password",placeholder:"PASSWORD" %>
-          </div>
-          <div class="input-group mb-3 mt-4">
-            <% if devise_mapping.rememberable? %>
-            <%= f.check_box :remember_me %>
-          　  <%= f.label :remember_me %>
-            <% end %>
+        　　　　　　　　　　   <%= f.password_field :password, class: "ml-xl-5", autocomplete: "current-password",placeholder:"PASSWORD" %>
           </div>
           <hr>
-            <%= f.submit 'SIGN IN', class:"btn btn-lg btn-block btn-info mt-4" %>
+            <%= f.submit 'SIGN IN', class:"btn btn-lg btn-block btn-light mt-4" %>
         <% end %>
 
         <%= render "public/shared/links" %>

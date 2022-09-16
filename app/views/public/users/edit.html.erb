@@ -1,32 +1,28 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class="col-md-5 col-lg-7 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <%= render 'public/shared/user_error_messages', user: @user %>
       <h5 class="text-dark bg-light p-4 mb-0">EDIT PROFILE</h5>
       <div class="form-body p-4">
        <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
           <div class="input-group mb-3 mt-4">
-            <%= f.label :name , class: "ml-xl-5"%><br />
+            <%= f.label :name , class: "ml-xl-5"%>　　　　　　　　　<p><%= f.text_field :name, class: "ml-xl-5", autofocus: true, autocomplete: "name" %></p>
           </div>
           <div class="input-group mb-3 mt-4">
-            <%= f.label :introduction , class: "ml-xl-5"%><br />
-                 <%= f.text_field :introduction, class: "ml-xl-5", autofocus: true, autocomplete: "introduction" %>
+            <%= f.label :introduction , class: "ml-xl-5"%>　　　　　　<p><%= f.text_field :introduction, class: "ml-xl-5", autofocus: true, autocomplete: "introduction" %></p>
           </div>
           <div class="input-group mb-3 mt-4">
-            <%= f.label :profile_image , class: "ml-xl-5"%><br />
-                 <%= f.file_field :profile_image, accept: "image/*", class: "ml-xl-5", autofocus: true, autocomplete: "profile_image" %>
+            <%= f.label :profile_image , class: "ml-xl-5"%>　　　　　<p><%= f.file_field :profile_image, accept: "image/*", class: "ml-xl-5", autofocus: true, autocomplete: "profile_image" %></p>
           </div>
           <div class="input-group mb-3 mt-4">
-            <%= f.label :email , class: "ml-xl-5"%><br />
-                 <%= f.email_field :email, class: "ml-xl-5", autofocus: true, autocomplete: "email" %>
+            <%= f.label :email , class: "ml-xl-5"%>　　　　　　　　　<p><%= f.email_field :email, class: "ml-xl-5", autofocus: true, autocomplete: "email" %></p>
           </div>
           <div class="input-group mb-3 mt-4">
-            <%= f.label :password, class: "ml-xl-5" %><br />
-               <%= f.password_field :password, class: "ml-xl-5", autocomplete: "current-password" %>
+            <%= f.label :password, class: "ml-xl-5" %>　　　　　　　<p><%= f.password_field :password, class: "ml-xl-5", autocomplete: "current-password" %></p>
           </div>
           <hr>
-          <%= f.submit "UPDATE", class: "btn btn-lg btn-block btn-info rounded-pill" %>
-          <%= link_to "CANCEL MEMBERSHIP", users_cancel_path, class: "btn btn-lg btn-block btn-danger rounded-pill" %>
+          <p><%= f.submit "UPDATE", class: "btn btn-sm btn-block btn-info rounded-pill" %></p>
+          <p><%= link_to "CANCEL MEMBERSHIP", users_cancel_path, class: "btn btn-sm btn-block btn-danger rounded-pill" %></p>
         <% end %>
       </div>
     </div>

@@ -26,7 +26,7 @@
             <%= f.file_field :image, accept: "image/*", class: "w-100" %>
           </div>
                     <!-- Rate -->
-          <div class="form-group row" id="star">
+          <div class="star" id="star">
             <%= f.hidden_field :star, id: :review_star %>
           </div>
           <!-- 評価javascript -->
@@ -40,7 +40,7 @@
             });
           </script>
           <hr>
-          <%= f.submit 'SUBMIT', class:"btn btn-lg btn-block btn-info mt-4" %>
+          <%= f.submit 'SUBMIT', class:"btn btn-lg btn-block btn-light mt-4" %>
         <% end %>
       </div>
     </div>

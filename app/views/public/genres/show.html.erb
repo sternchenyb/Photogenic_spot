@@ -1,22 +1,20 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-3">
-          <%= render 'search', genres: @genres %>
+        <div class="col-md-3 sidebar text-center px-0 my-5">
+          <%= link_to "NEW SPOT",new_spot_path, class:"btn btn-lg btn-light" %>
+          <aside class="shadow-lg rounded px-0 my-5">
+            <%= render 'public/genres/search', genres: @genres %>
+          </aside>
         </div>
-        <div class="col-lg-9 mx-auto">
-            <h2>SEARCHED TAG "<%= @genre.name %>"</h2><p class="text-center">"<%= @spots.count %> RESULTS"</p>
-            <!--観光地詳細をここにeachで並べる-->
-            <div class="spots-wrap row">
-            <% @spots.each do |spot| %>
-             <div class="spot-box col-lg-3">
-                <div><%= image_tag spot.image, size: "200x200" %></div>
-                <div><%= link_to spot.name, spot_path(spot.id) %></div>
-                <div><%= spot.address %></div>
-            </div>
-            <% end %>
-            <%= paginate @spots %>
-             
-            </div>
+        <div class="col-md-9 card-list-container py-2">
+          <h3 class="text-dark bg-light p-3 mb-0 text-center">SEARCHED TAG "<%= @genre.name %>"</h2><p class="text-center">"<%= @spots.count %> RESULTS"</h3>
+          <div class="sorting spots">
+            <%= link_to 'NEWEST', genre_path(latest: "true"), class:"text-dark" %>
+            <%= link_to 'OLDEST', genre_path(old: "true") , class:"text-dark"%>
+            <%= link_to 'RANK', genre_path(star_count: "true") , class:"text-dark"%>
+          </div>
+          <%= render'public/spots/index', spots: @spots %>
+          <%= paginate @spots %>
         </div>
     </div>
 </div>
