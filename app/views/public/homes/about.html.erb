@@ -1,50 +1,79 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+      <input id="address" type="textbox" value="">
+      <input type="button" value="地図を検索" onclick="codeAddress()">
       <div id="map"></div>
+
+
       <script>
-      function initMap() {
+        let map
 
-      //初期表示位置
-      let latlng = new google.maps.LatLng(38.60, 139.5);
-      //デザイン
-      let styles = [
-           {
-            stylers: [
-             { "saturation": 0 },
-             { "lightness": 0 }
-            ]
-           }
-          ];
+        const display = document.getElementById('display')
 
-      let map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 5.5,
-          styles: styles,
-          center: latlng
-      });
-      let transitLayer = new google.maps.TransitLayer();
-      transitLayer.setMap(map);
+        // mapの表示関数
+        function initMap() {
+            geocoder = new google.maps.Geocoder()
 
-          <% @spots.each do |spot|%>
-        ( function() {
-          let markerLatLng = new google.maps.LatLng({lat: <%= spot.latitude %>, lng: <%= spot.longitude %>}); // 緯度経度のデータ作成
-          let marker = new google.maps.Marker({
-            position: markerLatLng,
-            map: map
-          });
-    　　　//マーカーをクリックしたとき、詳細情報を表示
-          let infowindow = new google.maps.InfoWindow({
-            position: markerLatLng,
-            content: "<a href='<%= spot_url(spot.id) %>' target='_blank'><%= spot.name %></a>"
-          }); //ここで詳細ページへのリンクを表示させる
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
+            // mapの初期位置, 縮尺を定義
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: 35.6458437,
+                    lng: 139.7046171
+                },
+                zoom: 2.5,
+            });
 
-       })();
-      <% end %>
+            // mapsテーブルにあるそれぞれのレコードをmap上に表示
+            <% @spots.each do |spot| %>
+                (function(){
+                var contentString = "住所：<%= spot.address %>";
 
+                // マーカーを立てる
+                var marker = new google.maps.Marker({
+                    position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
+                    map: map,
+                    title: contentString
+                });
 
+                // 情報ウィンドウ(吹き出し)の定義
+                // 投稿の詳細ページへのリンクも
+                var infowindow = new google.maps.InfoWindow({
+                position: {lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
+                content: "<a href='<%= spot_url(spot.id) %>' target='_blank'><%= spot.name %></a>"
+                });
+
+                // クリックしたときに情報ウィンドウを表示
+                marker.addListener('click', function() {
+                infowindow.open(map, marker);
+                });
+
+                })();
+            <% end %>
+        }
+
+        let geocoder
+
+          // 地図検索関数
+          function codeAddress() {
+              let inputAddress = document.getElementById('address').value;
+
+              geocoder.geocode({
+                  'address': inputAddress
+              }, function (results, status) {
+                  if (status == 'OK') {
+                      map.setCenter(results[0].geometry.location);
+                      var marker = new google.maps.Marker({
+                          map: map,
+                          position: results[0].geometry.location
+                      });
+
+                  display.textContent = "検索結果：" + results[ 0 ].geometry.location
+                  } else {
+                      alert('該当する結果がありませんでした：' + status);
+                  }
+              });
+          }
       </script>
       <script async defer
             src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GMAP_API'] %>&callback=initMap">

@@ -5,7 +5,7 @@
     <div class="card mx-auto mt-4 shadow-lg card-box">
       <div class="card-body">
         <div class="row">
-          <div class="spot-image mx-auto text-center">
+          <div class="spot-image text-center">
            <%= link_to spot_path(spot.id) do %>
              <%= image_tag spot.image.variant( resize: "300x280^", gravity: "center" ) %>
            <% end %>
