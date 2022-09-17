@@ -13,9 +13,9 @@
         <h3 class="text-dark bg-light p-3 mb-0 text-center">SORRY, WE COULDN'T FIND ANY RESULTS</h3>
       <% end %>
       <div class="sorting spots text-right">
-        <%= link_to 'NEWEST', search_path(latest: "true"), class:"text-dark" %>
-        <%= link_to 'OLDEST', search_path(old: "true") , class:"text-dark"%>
-        <%= link_to 'RANK', search_path(star_count: "true") , class:"text-dark"%>
+        <%= link_to 'NEWEST', search_path(latest: "true", keyword: params[:keyword]), class:"text-dark" %>
+        <%= link_to 'OLDEST', search_path(old: "true", keyword: params[:keyword]) , class:"text-dark"%>
+        <%= link_to 'RANK', search_path(star_count: "true", keyword: params[:keyword]) , class:"text-dark"%>
       </div>
       <%= render'public/spots/index', spots: @spots %>
       <%= paginate @spots %>

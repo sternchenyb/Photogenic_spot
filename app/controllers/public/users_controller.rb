@@ -45,11 +45,11 @@ class Public::UsersController < ApplicationController
 
       # 観光地を評価順で表示
     if params[:latest]
-     @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).latest.page(params[:page])
+    @favorite_spots = Kaminari.paginate_array(Spot.where(id: favorites).latest).page(params[:page])
     elsif params[:old]
-     @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).old.page(params[:page])
+     @favorite_spots = Kaminari.paginate_array(Spot.where(id: favorites).old).page(params[:page])
     elsif params[:star_count]
-     @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).star_count.page(params[:page])
+     @favorite_spots = Kaminari.paginate_array(Spot.where(id: favorites).star_count).page(params[:page])
     else
      @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).page(params[:page])
     end
