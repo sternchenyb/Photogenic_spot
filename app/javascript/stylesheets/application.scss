@@ -11,9 +11,24 @@
   }
 
   #map {
-    height: 400px;
+    height: 600px;
   }
 
   .star {
     size: 20px;
+  }
+
+  .pagination .page-link {
+  background: white;
+  color: gray;
+  }
+
+  .pagination {
+  padding: 20px;
+  justify-content: center;
+  box-shadow:large;
+  }
+
+  .spot-image {
+  margin: auto;
   }

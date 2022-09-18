@@ -11,7 +11,7 @@
       <div class="sorting spots text-right">
         <%= link_to 'NEWEST', favorites_user_path(latest: "true"), class:"text-dark" %>
         <%= link_to 'OLDEST', favorites_user_path(old: "true") , class:"text-dark"%>
-        <%= link_to 'POPULARITY', favorites_user_path(star_count: "true") , class:"text-dark"%>
+        <%= link_to 'RANK', favorites_user_path(star_count: "true") , class:"text-dark"%>
       </div>
       <div class="card-list-container row">
         <% @favorite_spots.each do |spot|%>
