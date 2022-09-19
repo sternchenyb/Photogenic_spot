@@ -12,21 +12,32 @@ Admin.create!(
    password: '111111'
 )
 
-user=User.create(name: "Erika",
+user1=User.create(name: "Erika",
                   introduction: "I like traveling.",
                   email: "erika@email.com",
                   password: "phoenix",
-                  password_confirmation: "phoenix"
                   )
-user.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/author1.jpg')),
-                  filename: 'author1.jpg')
+user1.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/profile_image.jpg')),
+                  filename: 'profile_image.jpg')
 
-user=User.create(name: "River",
+user2=User.create(name: "River",
                   introduction: "I like taking photos.",
                   email: "river@email.com",
                   password: "phoenix",
-                  password_confirmation: "phoenix"
                   )
-user.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/profile_image.jpeg')),
-                  filename: 'profile_image.jpeg')
+user2.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/profile_image.jpg')),
+                  filename: 'profile_image.jpg')
 
+genre1=Genre.create!(
+  name: 'TOURIST ATTRACTION'
+)
+
+spot1=Spot.user1.create!(genre_id: genre1.id,
+                    name: "test_name",
+                    address: "test_address",
+                    caption: "test_caption",
+                    star: "3",
+                    latitude: 1,
+                    longitude: 1
+                    )
+spot1.image.attach(io: File.open(Rails.root.join('app/assets/images/Nagoya_castle.jpg')), filename: 'Nagoya_castle.jpg')

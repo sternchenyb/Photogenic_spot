@@ -6,6 +6,7 @@ class Public::UsersController < ApplicationController
     @spots = @user.spots.page(params[:page])
     @followings = @user.followings
     @followers = @user.followers
+    byebug
   end
 
   def cancel
