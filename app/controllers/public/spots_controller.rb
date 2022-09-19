@@ -77,7 +77,7 @@ class Public::SpotsController < ApplicationController
   def destroy
    @spot = Spot.find(params[:id])
    if @spot.destroy
-     flash[:notice] = "Book have deleted spot successfully."
+     flash[:notice] = "You have deleted spot successfully."
     redirect_to spots_path
    end
   end

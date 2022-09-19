@@ -11,3 +11,22 @@ Admin.create!(
    email: 'admin@admin',
    password: '111111'
 )
+
+user=User.create(name: "Erika",
+                  introduction: "I like traveling.",
+                  email: "erika@email.com",
+                  password: "phoenix",
+                  password_confirmation: "phoenix"
+                  )
+user.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/author1.jpg')),
+                  filename: 'author1.jpg')
+
+user=User.create(name: "River",
+                  introduction: "I like taking photos.",
+                  email: "river@email.com",
+                  password: "phoenix",
+                  password_confirmation: "phoenix"
+                  )
+user.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/profile_image.jpeg')),
+                  filename: 'profile_image.jpeg')
+
