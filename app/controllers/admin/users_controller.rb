@@ -7,7 +7,6 @@ class Admin::UsersController < ApplicationController
  def show
     @user = User.find(params[:id])
     @spots = @user.spots.page(params[:page])
-    byebug
  end
 
  def edit
