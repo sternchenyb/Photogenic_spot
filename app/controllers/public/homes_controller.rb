@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @randoms = Spot.order("RANDOM()").limit(5)
+    @randoms = Spot.find(Spot.ids.sample(5))
     @genres = Genre.all
   end
 

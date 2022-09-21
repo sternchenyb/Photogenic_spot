@@ -29,5 +29,5 @@ class Spot < ApplicationRecord
    Spot.where(["name LIKE(?) OR caption LIKE(?) OR address LIKE(?)",
                  "%#{search_word}%", "%#{search_word}%", "%#{search_word}%" ])
   end
-
+  
 end
