@@ -7,13 +7,14 @@
       </aside>
     </div>
     <div class="col-md-9 card-list-container py-2">
-      <h5 class="text-dark bg-light p-3 mb-0 text-center">YOUR LIKES SPOTS</h5>
+      <h5 class="text-dark bg-light p-3 mb-0 text-center">LIKES SPOT</h5>
       <div class="sorting spots text-right">
         <%= link_to 'NEWEST', favorites_user_path(latest: "true"), class:"text-dark" %>
         <%= link_to 'OLDEST', favorites_user_path(old: "true") , class:"text-dark"%>
         <%= link_to 'RANK', favorites_user_path(star_count: "true") , class:"text-dark"%>
       </div>
       <div class="card-list-container row">
+        <% if @favorite_spots.exists? %>
         <% @favorite_spots.each do |spot|%>
           <div class="card mx-auto mt-4 shadow-lg card-box">
            <div class="card-body">
@@ -63,6 +64,9 @@
             </div>
           </div>
         </div>
+        <% end %>
+        <% else %>
+          <p class="text-center mx-auto">WHEN YOU LIKE ANY SPOT,<br> IT WILL SHOW UP HERE.</p>
         <% end %>
         <%= paginate @favorite_spots %>
       </div>

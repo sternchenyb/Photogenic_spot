@@ -144,3 +144,45 @@ spots = Spot.create!([
     longitude: 136.8815,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/Nagoya_hotel.jpg")),filename: 'Nagoya_hotel.jpg')}
     ])
+
+comments = Comment.create!([
+    {user_id: 1,
+    spot_id: 6,
+    comment: "I wanna visit here!"},
+    {user_id: 1,
+    spot_id: 3,
+    comment: "I hope I can visit here after they finish reconstruction work."},
+    {user_id: 2,
+    spot_id: 8,
+    comment: "Delicious!"},
+    {user_id: 3,
+    spot_id: 9,
+    comment: "Best Christmas in NYC."},
+    {user_id: 4,
+    spot_id: 5,
+    comment: "Here is the best place to see Toronto!"},
+    {user_id: 5,
+    spot_id: 6,
+    comment: "I like spending time here on the weekends."}
+    ])
+
+favorites = Favorite.create!([
+    {user_id: 1,
+    spot_id: 6},
+    {user_id: 1,
+    spot_id: 8},
+    {user_id: 1,
+    spot_id: 3},
+    {user_id: 2,
+    spot_id: 1},
+    {user_id: 2,
+    spot_id: 8},
+    {user_id: 3,
+    spot_id: 9},
+    {user_id: 4,
+    spot_id: 8},
+    {user_id: 4,
+    spot_id: 1},
+    {user_id: 5,
+    spot_id: 1}
+    ])
