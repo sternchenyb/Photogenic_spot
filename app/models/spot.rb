@@ -17,7 +17,6 @@ class Spot < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
   scope :star_count, -> {order(star: :desc)}
 
-
   #いいね機能
   def favorited_by?(user)
     return false if user == nil
