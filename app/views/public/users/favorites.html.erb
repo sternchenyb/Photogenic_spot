@@ -14,7 +14,7 @@
         <%= link_to 'RANK', favorites_user_path(star_count: "true") , class:"text-dark"%>
       </div>
       <div class="card-list-container row">
-        <% if @favorite_spots.exists? %>
+        <% if @favorite_spots.any? %>
         <% @favorite_spots.each do |spot|%>
           <div class="card mx-auto mt-4 shadow-lg card-box">
            <div class="card-body">

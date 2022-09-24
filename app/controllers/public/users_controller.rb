@@ -3,9 +3,19 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @spots = @user.spots.page(params[:page])
     @followings = @user.followings
     @followers = @user.followers
+
+      # 観光地をソートで表示
+    if params[:latest]
+     @spots = @user.spots.latest.page(params[:page])
+    elsif params[:old]
+     @spots = @user.spots.old.page(params[:page])
+    elsif params[:star_count]
+     @spots = @user.spots.star_count.page(params[:page])
+    else
+     @spots = @user.spots.page(params[:page])
+    end
   end
 
   def cancel
@@ -43,7 +53,7 @@ class Public::UsersController < ApplicationController
     @favorite_spots = Kaminari.paginate_array(Spot.find(favorites)).page(params[:page])
     @genres = Genre.all
 
-      # 観光地を評価順で表示
+      # 観光地をソートで表示
     if params[:latest]
     @favorite_spots = Kaminari.paginate_array(Spot.where(id: favorites).latest).page(params[:page])
     elsif params[:old]

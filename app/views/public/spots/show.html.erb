@@ -26,6 +26,7 @@
               <%= render 'public/favorites/favorite-btn', spot: @spot %>
                 <div id="star-rate<%= @spot.id %>"></div>
                  <script>
+                  $('#star-rate-<%=@spot.id %>').empty();
                    $('#star-rate<%= @spot.id %>').raty({
                      size      : 36,
                      starOff   : '<%= asset_path('star-off.png') %>',
@@ -38,8 +39,8 @@
               <p class="card-title">
                 <strong><i class="far fa-flag"></i><span> <%= @spot.name %></span></strong>
               </p>
-              <p class="card-text">CAPTION:<br> <%= @spot.caption %></p>
-              <p class="card-text">ADDRESS:<br> <%= @spot.address %></p>
+              <p class="card-text">CAPTION:<br> <strong><%= @spot.caption %></strong></p>
+              <p class="card-text">ADDRESS:<br> <strong><%= @spot.address %></strong></p>
               <p class="text-right">
                 <%= l @spot.created_at, format: :short %>
                 <% if @spot.user == current_user %>

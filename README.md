@@ -22,7 +22,7 @@
 - 観光情報を広めたい時
 
 ## 設計書
-<...>
+
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -34,3 +34,4 @@
 ## 使用素材
 - Squarespace
 - Pixabay
+- Google map API

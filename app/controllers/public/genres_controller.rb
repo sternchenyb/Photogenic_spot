@@ -4,7 +4,7 @@ class Public::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     @spots = @genre.spots.page(params[:page])
 
-      # 観光地を評価順で表示
+      # 観光地をソートで表示
     if params[:latest]
      @spots = @genre.spots.latest.page(params[:page])
     elsif params[:old]

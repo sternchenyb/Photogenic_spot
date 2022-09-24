@@ -9,7 +9,7 @@ class Public::SpotsController < ApplicationController
     @genres = Genre.all
     @keyword = "#{params[:keyword]}"
 
-      # 観光地を評価順で表示
+      # 観光地をソートで表示
     if params[:latest]
      @spots = @search_word.latest.page(params[:page])
     elsif params[:old]
@@ -25,7 +25,7 @@ class Public::SpotsController < ApplicationController
     @spots = Spot.page(params[:page])
     @genres = Genre.all
 
-    # 観光地を評価順で表示
+    # 観光地をソートで表示
     if params[:latest]
      @spots = Spot.latest.page(params[:page])
     elsif params[:old]

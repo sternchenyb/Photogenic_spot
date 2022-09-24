@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create(
    name: 'admin',
@@ -179,6 +172,8 @@ favorites = Favorite.create!([
     spot_id: 8},
     {user_id: 3,
     spot_id: 9},
+    {user_id: 3,
+    spot_id: 5},
     {user_id: 4,
     spot_id: 8},
     {user_id: 4,
@@ -186,3 +181,19 @@ favorites = Favorite.create!([
     {user_id: 5,
     spot_id: 1}
     ])
+
+relationships = Relationship.create!([
+    {follower_id: 1,
+    followed_id: 5},
+    {follower_id: 1,
+    followed_id: 2},
+    {follower_id: 2,
+    followed_id: 3},
+    {follower_id: 3,
+    followed_id: 4},
+    {follower_id: 4,
+    followed_id: 5},
+    {follower_id: 5,
+    followed_id: 1},
+    {follower_id: 5,
+    followed_id: 3} ])
