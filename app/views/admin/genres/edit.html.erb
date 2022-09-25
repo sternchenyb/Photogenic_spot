@@ -1,14 +1,13 @@
 <div class='container'>
   <div class='row'>
-    <div class='mx-auto'>
-     <h4 class='bg-dark text-light'>ジャンル編集</h4></br>
-      <div class='row'> 
-       ジャンル名　　
+    <div class='text-center'>
+     <h5 class="text-dark bg-light p-3 mb-0 text-center">ジャンル編集</h5></br>
+       ジャンル名
        <%= form_with model: [:admin,@genre],  method: :patch do |f| %>
-       <%= f.text_field :name %>　　
+       <%= f.text_field :name %>
        <%= f.submit '変更を保存', class: 'btn btn-success rounded-pill'%>
-       <% end %> 
+       <% end %>
       </div>
     </div>
   </div>
-</div>  
+</div>

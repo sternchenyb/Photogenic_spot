@@ -23,7 +23,9 @@
               <% end %>
             </div>
             <div class="col-10">
-              <%= render 'public/favorites/favorite-btn', spot: @spot %>
+              <span class="favorite">
+                <%= render 'public/favorites/favorite-btn', spot: @spot %>
+              </span>
                 <div id="star-rate<%= @spot.id %>"></div>
                  <script>
                   $('#star-rate-<%=@spot.id %>').empty();
@@ -36,12 +38,12 @@
                      score: <%= @spot.star %>,
                    });
                  </script>
-              <p class="card-title">
+              <p class="card-title py-3">
                 <strong><i class="far fa-flag"></i><span> <%= @spot.name %></span></strong>
               </p>
               <p class="card-text">CAPTION:<br> <strong><%= @spot.caption %></strong></p>
               <p class="card-text">ADDRESS:<br> <strong><%= @spot.address %></strong></p>
-              <p class="text-right">
+              <p class="uploaded">
                 <%= l @spot.created_at, format: :short %>
                 <% if @spot.user == current_user %>
                   <%= link_to "Edit", edit_spot_path(@spot.id), class:"btn btn-sm btn-light" %>

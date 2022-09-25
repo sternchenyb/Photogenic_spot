@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="mx-auto">
+   <div class="col-2"></div>
+   <div class='col-8 text-center px-5 px-sm-0 py-5'>
+      <h5 class="text-dark bg-light p-3 mb-0 text-center"><%= @user.name %> 's COMMENTS</h5>
       <table>
         <% if @user.comments.any? %>
          <% @user.comments.each do |comment| %>

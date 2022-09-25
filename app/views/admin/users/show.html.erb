@@ -1,33 +1,31 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
     <div class="col-md-3 py-5">
-      <h4 class="mx-auto text-center"><%= @user.name %>'s DETAILS</h4>
-     <table>
+      <h5 class="text-dark bg-light p-3 mb-0 text-center"><%= @user.name %>'s DETAILS</h5>
+     <table class="mx-auto ">
       <tr>
-       <th>USER ID</th>
+       <th>USER ID:</th>
        <td><%= @user.id %></td>
       </tr>
       <tr>
-       <th>NAME</th>
+       <th>NAME:</th>
        <td><%= @user.name %></td>
       </tr>
       <tr>
-       <th>INTRODUCTION</th>
+       <th>INTRODUCTION:</th>
        <td><%= @user.introduction %></td>
       </tr>
       <tr>
-       <th>IMAGE</th>
+       <th>IMAGE:</th>
        <td><%= image_tag @user.get_profile_image %></td>
       </tr>
       <tr>
-       <th>EMAIL</th>
+       <th>EMAIL:</th>
        <td><%= @user.email %></td>
       </tr>
       <tr>
-        <td><%= link_to 'COMMENTS', admin_user_comments_path(@user), class: "btn btn-sm btn-dark rounded-pill" %></td>
-      </tr>
-      <tr>
-       <td><%= link_to 'EDIT', edit_admin_user_path, class: "btn btn-sm btn-success  rounded-pill" %></td>
+       <td><%= link_to 'ALL COMMENTS', admin_user_comments_path(@user), class: "btn btn-sm btn-dark rounded-pill" %></td>
+       <td><%= link_to 'EDIT', edit_admin_user_path, class: "btn btn-sm btn-success btn-block rounded-pill" %></td>
       </tr>
      </table>
     </div>
@@ -35,11 +33,12 @@
     <div class="col-md-9">
       <div class="card-list-container py-5 row">
         <% @spots.each do |spot| %>
-          <div class="card mx-auto mt-4 shadow-lg card-box">
+          <div class="card mx-auto shadow-lg card-box">
           <div class="card-body">
             <div class="row">
               <div id="star-rate<%= spot.id %>"></div>
                 <script>
+                $('#star-rate-<%= spot.id %>').empty();
                  $('#star-rate<%= spot.id %>').raty({
                    size      : 36,
                    starOff   : '<%= asset_path('star-off.png') %>',
@@ -62,9 +61,6 @@
                   <% end %>
                 </p>
                 <p class="card-text">ADDRESS：<%= spot.address %></p>
-                <%= link_to(admin_user_path(spot.user_id), class:"text-dark") do %>
-                <span><i class="fas fa-user"></i> By <%= spot.user.name %> </span>
-                <% end %>
               </div>
             </div>
           </div>

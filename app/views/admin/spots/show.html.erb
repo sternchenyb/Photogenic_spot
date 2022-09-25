@@ -5,7 +5,7 @@
       <div class="card w-100 mx-auto mt-4 shadow-lg">
         <div class="card-body">
           <div class="row">
-              <%= image_tag @spot.image.variant( resize: "600x500^", gravity: "center" ) %>
+            <%= image_tag @spot.image.variant( resize: "600x500^", gravity: "center" ) %>
             <div class="col-2 text-center">
               <%= image_tag @spot.user.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
               <%= link_to(admin_user_path(@spot.user_id), class:"text-dark") do %>
@@ -13,13 +13,9 @@
               <% end %>
             </div>
             <div class="col-10">
-              <p class="card-title">
-                <strong><i class="far fa-flag"></i><span> <%= @spot.name %></span></strong>
-              </p>
-              <p class="card-text">CAPTION：<%= @spot.caption %></p>
-              <p class="card-text">ADDRESS: <%= @spot.address %></p>
               <div id="star-rate<%= @spot.id %>"></div>
                 <script>
+                  $('#star-rate-<%=@spot.id %>').empty();
                    $('#star-rate<%= @spot.id %>').raty({
                      size      : 36,
                      starOff   : '<%= asset_path('star-off.png') %>',
@@ -29,6 +25,12 @@
                      score: <%= @spot.star %>,
                    });
                 </script>
+              <p class="card-title">
+                <strong><i class="far fa-flag"></i><span> <%= @spot.name %></span></strong>
+              </p>
+              <p class="card-text"><strong>CAPTION：</strong><%= @spot.caption %></p>
+              <p class="card-text"><strong>ADDRESS: </strong><%= @spot.address %></p>
+
               <table>
                 <% @spot.comments.each do |comment| %>
                   <tbody>
@@ -45,8 +47,8 @@
                   </tbody>
                 <% end %>
               </table>
-              <p class="text-right">
-                <%= l @spot.created_at %>
+              <p class="uploaded">
+                <%= l @spot.created_at, format: :short %>
                 <%= link_to "Destroy",admin_spot_path(@spot.id),class:"btn btn-sm btn-dark", method: :delete, "data-confirm" => "Are you sure？" %>
               </p>
             </div>
