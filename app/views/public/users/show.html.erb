@@ -12,7 +12,7 @@
          <strong>POSTS:</strong>
          <p class="text-right"><%= @user.spots.count %></p>
          <%= link_to(favorites_user_path(@user.id), class:"text-dark") do %>
-           <p><strong>LIKES SPOT</strong></p>
+           <p><strong>LIKE SPOTS</strong></p>
          <% end %>
          <%= link_to(user_follow_path(@user.id), class:"text-dark") do %>
             <strong>FOLLOWING:</strong>

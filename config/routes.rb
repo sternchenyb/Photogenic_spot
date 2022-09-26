@@ -35,7 +35,6 @@ Rails.application.routes.draw do
    patch 'users/withdraw' => 'users#withdraw'
    get 'users/information/edit' => 'users#edit'
    patch 'users/information' => 'users#update'
-   #delete '/spots/destroy_all' => 'spots#destroy_all'
    get "/search" => "spots#search"
    resources :spots, only: [:index,:update,:destroy,:create,:edit,:show,:new] do
     resource :favorites, only: [:create, :destroy]

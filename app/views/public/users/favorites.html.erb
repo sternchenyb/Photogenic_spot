@@ -7,7 +7,7 @@
       </aside>
     </div>
     <div class="col-md-9 card-list-container py-2">
-      <h5 class="text-dark bg-light p-3 mb-0 text-center">LIKES SPOT</h5>
+      <h5 class="text-dark bg-light p-3 mb-0 text-center">LIKE SPOTS</h5>
       <div class="sorting spots text-right">
         <%= link_to 'NEWEST', favorites_user_path(latest: "true"), class:"text-dark" %>
         <%= link_to 'OLDEST', favorites_user_path(old: "true") , class:"text-dark"%>
@@ -45,7 +45,7 @@
                    score: <%= spot.star %>,
                  });
                 </script>
-                <div class="text-right">
+                <div class="uploaded">
                  <%= l spot.created_at, format: :short %>
                 </div>
               </div>
@@ -66,7 +66,7 @@
         </div>
         <% end %>
         <% else %>
-          <p class="text-center mx-auto">WHEN YOU LIKE ANY SPOT,<br> IT WILL SHOW UP HERE.</p>
+          <p class="text-center mx-auto">WHEN THIS ACCOUNT LIKES ANY SPOT,<br> IT WILL SHOW UP HERE.</p>
         <% end %>
         <%= paginate @favorite_spots %>
       </div>

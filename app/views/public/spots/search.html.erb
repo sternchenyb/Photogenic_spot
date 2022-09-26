@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-9 card-list-container py-2">
       <% if @spots.exists? %>
-        <h3 class="text-dark bg-light p-3 mb-0 text-center">THERE IS <%= @spots.count %> RESULTS FOR "<%= @keyword %>"</h3>
+        <h3 class="text-dark bg-light p-3 mb-0 text-center">THERE ARE <%= @spots.count %> RESULTS FOR "<%= @keyword %>"</h3>
       <% else %>
         <h3 class="text-dark bg-light p-3 mb-0 text-center">SORRY, WE COULDN'T FIND ANY RESULTS</h3>
       <% end %>
