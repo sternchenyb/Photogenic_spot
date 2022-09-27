@@ -5,10 +5,9 @@ class Admin::CommentsController < ApplicationController
   end
 
   def destroy
-     @user = User.find(params[:user_id])
      @comment = Comment.find(params[:id])
      @comment.destroy
-     redirect_to admin_user_comments_path(@user)
+     redirect_back fallback_location: admin_users_path
   end
 
   private
