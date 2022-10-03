@@ -23,10 +23,24 @@ class Spot < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  #一覧画面でのキーワード検索機能
+  #利用者側の一覧画面でのキーワード検索機能
   def self.search(search_word)
    Spot.where(["name LIKE(?) OR caption LIKE(?) OR address LIKE(?)",
                  "%#{search_word}%", "%#{search_word}%", "%#{search_word}%" ])
   end
-  
+
+  #管理者側で利用する検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @spot = Spot.where("name LIKE?","#{word}")
+    elsif search == "forward_match"
+      @spot = Spot.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @spot = Spot.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @spot = Spot.where("name LIKE?","%#{word}%")
+    else
+      @spot = Spot.all
+    end
+  end
 end

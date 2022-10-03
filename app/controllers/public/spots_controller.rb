@@ -1,4 +1,5 @@
 class Public::SpotsController < ApplicationController
+ before_action :correct_user, only: [:edit,:destroy]
 
   def new
     @spot = Spot.new
@@ -53,7 +54,7 @@ class Public::SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
-   if @spot.save!
+   if @spot.save
      flash[:notice] = "You have created spot successfully."
     redirect_to spot_path(@spot)
    else
@@ -83,6 +84,13 @@ class Public::SpotsController < ApplicationController
   end
 
   private
+
+  def correct_user
+    spot = Spot.find(params[:id])
+    if current_user.id != spot.user_id
+      redirect_to spots_path
+    end
+  end
 
   def spot_params
     params.require(:spot).permit(:name,:address,:image,:caption,:genre_id,:star,:latitude,:longitude)

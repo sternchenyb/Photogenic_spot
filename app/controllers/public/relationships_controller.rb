@@ -10,7 +10,7 @@ class Public::RelationshipsController < ApplicationController
     redirect_to request.referer
   end
 
-  def follow
+  def relationship
     @user = User.find(params[:user_id])
     @followings = @user.followings
     @followers = @user.followers

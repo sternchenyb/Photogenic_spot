@@ -18,9 +18,9 @@
       </tr>
       <tr>
        <td><%= f.radio_button :is_deleted, 'false' %>
-           <%= f.label :is_deleted, '有効' %></td>
+           <%= f.label :is_deleted, '有効', value: false %></td>
        <td><%= f.radio_button :is_deleted, 'true' %>
-           <%= f.label :is_deleted, '退会' %></td>
+           <%= f.label :is_deleted, '退会', value: true %></td>
       </tr>
       <tr>
        <td><%= f.submit '変更を保存', class: 'btn btn-success rounded-pill'%></td>

@@ -1,6 +1,7 @@
 <div class="container">
-  <div class="row py-5">
-    <div class="col-5 shadow-lg mx-auto">
+  <div class="row py-3">
+    <h5 class="text-dark bg-light p-3 text-center"><%= @user.name %> 'S RELATIONSHIPS</h5>
+    <div class="col-5 shadow-lg mx-auto py-3">
       <h5 class="text-dark bg-light p-3 text-center">FOLLOWING</h5>
       <% if @followings.exists? %>
         <% @followings.each do |following| %>
@@ -10,7 +11,7 @@
                 <td>
                   <%= image_tag following.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
                   <%= link_to(user_path(following.id), class:"text-dark") do %>
-                    <p class="text-center"><%= following.name %></p>
+                    <p class="text-center"><strong><i class="fas fa-user"></i></strong><%= following.name %></p>
                   <% end %>
                 </td>
                 <td>POSTS: <%= following.spots.count %></td>
@@ -22,9 +23,9 @@
         <p class="text-center mx-auto">WHEN YOU FOLLOW OTHER ACCOUNT,<br> THEY WILL SHOW UP HERE.</p>
       <% end %>
     </div>
-    <div class="col-5 shadow-lg mx-auto">
+    <div class="col-5 shadow-lg mx-auto py-3">
       <h5 class="text-dark bg-light p-3 text-center">FOLLOWERS</h5>
-            <% if @followers.exists? %>
+      <% if @followers.exists? %>
         <% @followers.each do |follower| %>
           <table class="table-hover mx-auto">
             <tbody>
@@ -32,7 +33,7 @@
                 <td>
                   <%= image_tag follower.get_profile_image,size:"100,100", class:"mt-3 rounded-circle"; %>
                   <%= link_to(user_path(follower.id), class:"text-dark") do %>
-                    <p class="text-center"><%= follower.name %></p>
+                    <p class="text-center"><strong><i class="fas fa-user"></i></strong><%= follower.name %></p>
                   <% end %>
                 </td>
                 <td>POSTS: <%= follower.spots.count %></td>

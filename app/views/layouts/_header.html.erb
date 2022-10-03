@@ -1,12 +1,22 @@
       <nav class="navbar navbar-expand-lg navbar-white bg-white">
         <div class="container">
           <% if admin_signed_in? %>
-          <div class="col-4">
+          <div class="col-3">
             <a class="navbar-brand p-3" href=""><%= image_tag('Photogenic Spot-logo.png', size: '250x100') %></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+          </div>
+          <div class="col-4 search-area">
+            <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+              <%= f.text_field :word, placeholder: "KEYWORD", class:"search-text"%>
+              <%= f.select :range, options_for_select([['User'], ['Spot']]) %>
+              <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+              <%= button_tag type: "SUBMIT", class:"btn btn-default" do %>
+                <i class= "fas fa-search"></i>
+              <% end %>
+            <% end %>
           </div>
           <% else %>
           <div class="col-4">
@@ -49,12 +59,6 @@
                   <% end %>
                 </li>
               <% elsif user_signed_in? %>
-                <span class="u h7 text-white strong">WELCOME,<%= current_user.name %>!</span>
-                  <li class="nav-item">
-                    <%= link_to user_path(current_user), class: "btn btn-outline-secondary rounded-pill",title:"my page" do %>
-                    <i class="fas fa-address-card"></i> MY PAGE
-                    <% end %>
-                  </li>
                   <li class="nav-item">
                   <%= link_to spots_path,class: "btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
                   <i class="fas fa-map-marker-alt"></i> SPOTS
@@ -63,6 +67,16 @@
                   <li class="nav-item">
                     <%=  link_to about_path ,class: "btn btn-outline-secondary rounded-pill",title:"map" do %>
                     <i class="fas fa-location-arrow"></i> MAP
+                    <% end %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to user_path(current_user), class: "btn btn-outline-secondary rounded-pill",title:"my page" do %>
+                    <i class="fas fa-address-card"></i> MY PAGE
+                    <% end %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to favorites_user_path(current_user), class: "btn btn-outline-secondary rounded-pill",title:"my page" do %>
+                    <i class="fas fa-heart"></i> FAVORITES
                     <% end %>
                   </li>
                   <li class="nav-item">

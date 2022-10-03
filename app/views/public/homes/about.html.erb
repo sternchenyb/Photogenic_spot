@@ -41,7 +41,7 @@
                 // 投稿の詳細ページへのリンクも
                 var infowindow = new google.maps.InfoWindow({
                 position: {lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
-                content: "<a href='<%= spot_url(spot.id) %>' target='_blank'><%= spot.name %></a>"
+                content: "<a href='<%= spot_url(spot.id) %>' ><%= spot.name %></a>"
                 });
 
                 // クリックしたときに情報ウィンドウを表示

@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
+
   # ユーザー用
-  # URL /users/sign_in ...
+   # URL /users/sign_in ...
   devise_for :user, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions',
@@ -43,7 +40,7 @@ Rails.application.routes.draw do
    resources :genres, only: [:show]
    resources :users, only: [:withdraw,:cancel,:update,:destroy,:create,:edit,:show,:new]  do
     resource :relationships, only: [:create, :destroy]
-    get 'follow' => 'relationships#follow', as: 'follow'
+    get 'relationship' => 'relationships#relationship', as: 'relationship'
     member do
       get :favorites
     end
@@ -51,7 +48,7 @@ Rails.application.routes.draw do
  end
 
  namespace :admin do
-   root to: "homes#top"
+   get "search" => "searches#search"
    resources :spots, only: [:index,:create,:show,:edit,:update,:destroy]
    resources :genres, only: [:index,:create,:edit,:update,:destroy]
    resources :users, only: [:index,:show,:edit,:update] do

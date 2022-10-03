@@ -1,0 +1,42 @@
+<div class='container '>
+  <div class='row'>
+   <div class="col-2"></div>
+   <div class='col-8 px-5 px-sm-0 py-3 text-center'>
+    <table class="table table-hover table-inverse">
+      <!--検索対象モデルがUserの時 -->
+      <% if @range == "User" %>
+      <h5 class="text-dark bg-light p-3 mb-0 text-center">"<%= @range %>" の "<%= @word %>" を "<%= @search %>"で検索</h5>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to admin_user_path(user.id),class:"text-dark" do %>
+                  <span><i class="fas fa-user"></i> By <%= user.name %></span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% else %>
+        <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+        <h5 class="text-dark bg-light p-3 mb-0 text-center">"<%= @range %>" の "<%= @word %>" を "<%= @search %>"で検索</h5>
+        <tbody>
+          <% @spots.each do |spot| %>
+            <tr>
+              <td>
+                <%= link_to(admin_spot_path(spot.id), class:"text-dark") do %>
+                  <strong><i class="far fa-flag"></i><span> <%= spot.name %></span></strong>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to(admin_user_path(spot.user_id), class:"text-dark") do %>
+                <span><i class="fas fa-user"></i> By <%= spot.user.name %></span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

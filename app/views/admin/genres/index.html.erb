@@ -1,11 +1,10 @@
-<div class='container '>
+<div class='container'>
   <div class='row'>
    <div class="col-2"></div>
    <div class='col-8 text-center px-5 px-sm-0 py-5'>
-    <h5 class="text-dark bg-light p-3 mb-0 text-center">ジャンル追加</h5></br>
+    <h5 class="text-dark bg-light p-3 mb-0 text-center">ジャンル追加</h5>
    <div class='row'>
     <%= form_with model: [:admin,@genre], method: :post do |f| %>
-     ジャンル名
     <%= f.text_field :name, placeholder:"ジャンル名" %>
     <%= f.submit '新規登録', class: 'btn btn-success rounded-pill' %>
     <% end %>
