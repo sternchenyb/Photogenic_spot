@@ -4,7 +4,7 @@
     <p><strong><i class="fas fa-user"></i></strong><%= user.name %></p>
    <strong>INTRODUCTION:</strong>
    <p><%= user.introduction %></p>
-   <% if user_id == current_user.id %>
+   <% if @user.id == current_user.id %>
      <strong>EMAIL:</strong>
      <p><%= user.email %></p>
    <% end %>

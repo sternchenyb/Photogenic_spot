@@ -1,4 +1,4 @@
-      <nav class="navbar navbar-expand-lg navbar-white bg-white">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
           <% if admin_signed_in? %>
           <div class="col-3">
@@ -39,74 +39,74 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to admin_spots_path,class: "btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
+                  <%= link_to admin_spots_path,class: "nav-link btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
                   <i class="fas fa-map-marker-alt"></i> SPOTS
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%=  link_to admin_users_path,class: "btn btn-outline-secondary rounded-pill",title:"user lists" do %>
+                  <%=  link_to admin_users_path,class: "nav-link btn btn-outline-secondary rounded-pill",title:"user lists" do %>
                   <i class="fas fa-user-friends"></i> USERS
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%=  link_to admin_genres_path ,class: "btn btn-outline-secondary rounded-pill",title:"genre lists" do %>
+                  <%=  link_to admin_genres_path ,class: "nav-link btn btn-outline-secondary rounded-pill",title:"genre lists" do %>
                   <i class="fas fa-seedling"></i> GENRES
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to destroy_admin_session_path, method: :delete,class: "btn btn-outline-secondary rounded-pill",title:"logout" do %>
+                  <%= link_to destroy_admin_session_path, method: :delete,class: "nav-link btn btn-outline-secondary rounded-pill",title:"logout" do %>
                   <i class="fas fa-sign-out-alt"></i>LOGOUT
                   <% end %>
                 </li>
               <% elsif user_signed_in? %>
                   <li class="nav-item">
-                  <%= link_to spots_path,class: "btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
+                  <%= link_to spots_path,class: "nav-link btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
                   <i class="fas fa-map-marker-alt"></i> SPOTS
                     <% end %>
                   </li>
                   <li class="nav-item">
-                    <%=  link_to about_path ,class: "btn btn-outline-secondary rounded-pill",title:"map" do %>
+                    <%=  link_to about_path ,class: "nav-link btn btn-outline-secondary rounded-pill",title:"map" do %>
                     <i class="fas fa-location-arrow"></i> MAP
                     <% end %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to user_path(current_user), class: "btn btn-outline-secondary rounded-pill",title:"my page" do %>
+                    <%= link_to user_path(current_user), class: "nav-link btn btn-outline-secondary rounded-pill",title:"my page" do %>
                     <i class="fas fa-address-card"></i> MY PAGE
                     <% end %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to favorites_user_path(current_user), class: "btn btn-outline-secondary rounded-pill",title:"my page" do %>
+                    <%= link_to favorites_user_path(current_user), class: "nav-link btn btn-outline-secondary rounded-pill",title:"my favorites" do %>
                     <i class="fas fa-heart"></i> FAVORITES
                     <% end %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary rounded-pill",title:"logout" do %>
+                    <%= link_to destroy_user_session_path, method: :delete, class: "nav-link btn btn-outline-secondary rounded-pill",title:"logout" do %>
                     <i class="fas fa-sign-out-alt"></i> LOGOUT
                     <% end %>
                   </li>
               <% else %>
                   <li class="nav-item">
-                    <%= link_to about_path, data: {"turbolinks" => false}, class: "btn btn-outline-secondary rounded-pill",title:"about" do %>
+                    <%= link_to about_path, data: {"turbolinks" => false}, class: "nav-link btn btn-outline-secondary rounded-pill",title:"about" do %>
                     <i class="fas fa-map-signs"></i> ABOUT
                     <% end %>
                   </li>
                   <li class="nav-item">
-                  <%= link_to spots_path,class: "btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
+                  <%= link_to spots_path,class: "nav-link btn btn-outline-secondary rounded-pill",title:"spot lists" do %>
                   <i class="fas fa-map-marker-alt"></i> SPOTS
                     <% end %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to new_user_registration_path,class: "btn btn-outline-secondary rounded-pill",title:"sign up" do %>
+                    <%= link_to new_user_registration_path,class: "nav-link btn btn-outline-secondary rounded-pill",title:"sign up" do %>
                     <i class="fas fa-user-edit"></i> SIGN UP
                     <% end %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to users_guest_sign_in_path,class: "btn btn-outline-secondary rounded-pill",title: "guest sign in", method: :post do %>
+                    <%= link_to users_guest_sign_in_path,class: "nav-link btn btn-outline-secondary rounded-pill",title: "guest sign in", method: :post do %>
                     <i class="fas fa-id-badge"></i> GUEST SIGN IN
                     <% end %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to new_admin_session_path ,class: "btn btn-outline-secondary rounded-pill",title:"sign in" do %>
+                    <%= link_to new_admin_session_path ,class: "nav-link btn btn-outline-secondary rounded-pill",title:"sign in" do %>
                     *
                     <% end %>
                   </li>
