@@ -22,7 +22,7 @@
 - 観光情報を広めたい時
 
 ## 設計書
-
+![Photogenic_spots Diagram drawio](https://user-images.githubusercontent.com/95935073/191691260-eeb3437b-a862-45f6-a151-adb6a2ec6b75.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
